@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-950">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Staff & Admin Portal | Sam Academy of Science</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { brand: { 500: '#0284c7' }, accent: { 400: '#fbbf24', 500: '#f59e0b' } }, fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'], heading: ['"Outfit"', 'sans-serif'] } } }
+    }
+  </script>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col">
+
+  <!-- Admin Navigation -->
+  <nav class="bg-slate-900 border-b border-slate-800 px-6 py-4 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-lg bg-amber-500 flex items-center justify-center text-slate-950 font-bold"><i data-lucide="shield-check" class="w-5 h-5"></i></div>
+      <span class="font-heading font-extrabold text-white text-base">Sam Academy <span class="text-amber-400">Staff Control Panel</span></span>
+    </a>
+    <div id="admin-nav-actions" class="hidden flex items-center gap-3">
+      <span class="text-xs font-bold text-amber-400" id="admin-role-badge">Owner</span>
+      <button onclick="logoutAdmin()" class="px-3 py-1.5 bg-rose-500/10 text-rose-400 text-xs font-bold rounded-lg border border-rose-500/20">Logout</button>
+    </div>
+  </nav>
+
+  <!-- Login View -->
+  <div id="login-view" class="flex-1 flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 p-8 rounded-3xl max-w-md w-full space-y-6 shadow-2xl">
+      <div class="text-center space-y-2">
+        <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center mx-auto text-xl font-bold">🔒</div>
+        <h2 class="text-2xl font-heading font-extrabold text-white">Staff Login</h2>
+        <p class="text-xs text-slate-400">Restricted access for Owner and Manager.</p>
+      </div>
+
+      <form onsubmit="handleAdminLogin(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1">Select Role *</label>
+          <select id="admin-role" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-xs text-white">
+            <option value="owner">Academy Owner</option>
+            <option value="manager">Branch Manager</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1">Access Password *</label>
+          <input type="password" id="admin-pass" required placeholder="Enter password" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-white">
+        </div>
+        <div id="login-error" class="hidden text-xs text-rose-400 bg-rose-500/10 border border-rose-500/20 p-2 rounded text-center">Invalid Password! Access Denied.</div>
+        <button type="submit" class="w-full py-3 bg-amber-500 text-slate-950 font-extrabold rounded-xl text-xs">Unlock Admin Dashboard</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Dashboard View -->
+  <div id="dashboard-view" class="hidden flex-1 p-6 max-w-7xl mx-auto w-full space-y-6">
+    
+    <!-- Admin Tabs -->
+    <div class="flex flex-wrap gap-2 border-b border-slate-800 pb-3">
+      <button onclick="switchTab('students')" id="tab-btn-students" class="px-4 py-2 rounded-xl text-xs font-bold bg-amber-500 text-slate-950">👨‍🎓 Student Logins</button>
+      <button onclick="switchTab('questions')" id="tab-btn-questions" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 text-slate-300 border border-slate-800">❓ S-SAT Questions</button>
+      <button onclick="switchTab('materials')" id="tab-btn-materials" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 text-slate-300 border border-slate-800">📚 PDF Study Notes</button>
+      <button onclick="switchTab('tests')" id="tab-btn-tests" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 text-slate-300 border border-slate-800">💻 CBT Online Tests</button>
+      <button onclick="switchTab('ssat')" id="tab-btn-ssat" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 text-slate-300 border border-slate-800">🏆 S-SAT Candidates</button>
+    </div>
+
+    <!-- TAB 1: MANAGE STUDENTS -->
+    <div id="sec-students" class="space-y-6">
+      <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
+        <h3 class="font-bold text-white text-sm mb-4">+ Register Student & Set Password</h3>
+        <form onsubmit="adminAddStudent(event)" class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <input type="text" id="add-student-name" required placeholder="Full Name" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-xs text-white">
+          <input type="text" id="add-student-roll" required placeholder="Roll No (e.g. SAM2026-001)" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-xs text-white">
+          <select id="add-student-class" required class="bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
+            <option value="">Class Grade</option><option>Class 8th</option><option>Class 9th</option><option>Class 10th</option><option>Class 11th Science</option><option>Class 12th Science</option>
+          </select>
+          <input type="tel" id="add-student-phone" required placeholder="Phone Number" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-xs text-white">
+          <input type="password" id="add-student-pass" required placeholder="Create Password" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-xs text-white">
+          <button type="submit" class="bg-amber-500 text-slate-950 font-bold rounded-xl text-xs py-2">Create Account</button>
+        </form>
+      </div>
+
+      <div class="bg-slate-900 rounded-2xl border border-slate-800 overflow-x-auto">
+        <table class="w-full text-left text-xs">
+          <thead><tr class="bg-slate-950 border-b border-slate-800 text-slate-400 uppercase"><th class="py-3 px-4">Roll No</th><th class="py-3 px-4">Name</th><th class="py-3 px-4">Class</th><th class="py-3 px-4">Phone</th><th class="py-3 px-4">Password</th><th class="py-3 px-4">Action</th></tr></thead>
+          <tbody id="tbl-students"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAB 2: QUESTIONS -->
+    <div id="sec-questions" class="hidden space-y-6">
+      <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 space-y-4">
+        <h3 class="font-bold text-white text-sm">+ Add Question to S-SAT Online Test</h3>
+        <form onsubmit="adminSaveQuestion(event)" class="space-y-3">
+          <textarea id="q-text" required rows="2" placeholder="Question Statement" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-xs text-white"></textarea>
+          <div class="grid grid-cols-2 gap-3">
+            <input type="text" id="q-a" required placeholder="Option A" class="bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
+            <input type="text" id="q-b" required placeholder="Option B" class="bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
+            <input type="text" id="q-c" required placeholder="Option C" class="bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
+            <input type="text" id="q-d" required placeholder="Option D" class="bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
+          </div>
+          <select id="q-ans" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-amber-400 font-bold">
+            <option value="A">Correct Choice: A</option><option value="B">Correct Choice: B</option><option value="C">Correct Choice: C</option><option value="D">Correct Choice: D</option>
+          </select>
+          <button type="submit" class="w-full py-2.5 bg-amber-500 text-slate-950 font-bold rounded-xl text-xs">Save Question</button>
+        </form>
+      </div>
+
+      <div class="bg-slate-900 rounded-2xl border border-slate-800 overflow-x-auto">
+        <table class="w-full text-left text-xs">
+          <thead><tr class="bg-slate-950 border-b border-slate-800 text-slate-400 uppercase"><th class="py-3 px-4">Q#</th><th class="py-3 px-4">Question</th><th class="py-3 px-4">Correct</th><th class="py-3 px-4">Action</th></tr></thead>
+          <tbody id="tbl-questions"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAB 3: MATERIALS -->
+    <div id="sec-materials" class="hidden space-y-6">
+      <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
+        <h3 class="font-bold text-white text-sm mb-4">+ Upload PDF Study Link</h3>
+        <form onsubmit="adminAddMaterial(event)" class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <input type="text" id="mat-title" required placeholder="Title" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-xs text-white">
+          <select id="mat-sub" required class="bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
+            <option value="">Subject</option><option>Physics</option><option>Chemistry</option><option>Mathematics</option><option>Biology</option>
+          </select>
+          <input type="url" id="mat-url" required placeholder="PDF Link (Google Drive/URL)" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-xs text-white">
+          <button type="submit" class="bg-sky-600 text-white font-bold rounded-xl text-xs py-2 sm:col-span-3">Publish Material</button>
+        </form>
+      </div>
+      <div class="bg-slate-900 rounded-2xl border border-slate-800 overflow-x-auto">
+        <table class="w-full text-left text-xs">
+          <thead><tr class="bg-slate-950 border-b border-slate-800 text-slate-400 uppercase"><th class="py-3 px-4">Subject</th><th class="py-3 px-4">Title</th><th class="py-3 px-4">Action</th></tr></thead>
+          <tbody id="tbl-materials"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAB 4: TESTS -->
+    <div id="sec-tests" class="hidden space-y-6">
+      <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
+        <h3 class="font-bold text-white text-sm mb-4">+ Schedule CBT Online Test</h3>
+        <form onsubmit="adminAddTest(event)" class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <input type="text" id="test-title" required placeholder="Test Title" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-xs text-white">
+          <input type="text" id="test-date" required placeholder="Date/Time" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-xs text-white">
+          <input type="url" id="test-url" required placeholder="Exam Link" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-xs text-white">
+          <button type="submit" class="bg-emerald-500 text-slate-950 font-bold rounded-xl text-xs py-2 sm:col-span-3">Schedule Test</button>
+        </form>
+      </div>
+      <div class="bg-slate-900 rounded-2xl border border-slate-800 overflow-x-auto">
+        <table class="w-full text-left text-xs">
+          <thead><tr class="bg-slate-950 border-b border-slate-800 text-slate-400 uppercase"><th class="py-3 px-4">Title</th><th class="py-3 px-4">Date</th><th class="py-3 px-4">Action</th></tr></thead>
+          <tbody id="tbl-tests"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAB 5: SSAT CANDIDATES -->
+    <div id="sec-ssat" class="hidden space-y-6">
+      <div class="bg-slate-900 rounded-2xl border border-slate-800 overflow-x-auto">
+        <table class="w-full text-left text-xs">
+          <thead><tr class="bg-slate-950 border-b border-slate-800 text-slate-400 uppercase"><th class="py-3 px-4">Reg No</th><th class="py-3 px-4">Name</th><th class="py-3 px-4">Class</th><th class="py-3 px-4">Mode</th><th class="py-3 px-4">Phone</th><th class="py-3 px-4">Action</th></tr></thead>
+          <tbody id="tbl-ssat"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    const PASSWORDS = { owner: 'owner123', manager: 'sam2026' };
+
+    function handleAdminLogin(e) {
+      e.preventDefault();
+      const role = document.getElementById('admin-role').value;
+      const pass = document.getElementById('admin-pass').value;
+
+      if (pass === PASSWORDS[role]) {
+        sessionStorage.setItem('sam_active_admin', role === 'owner' ? 'Owner' : 'Manager');
+        showAdminDashboard();
+      } else {
+        document.getElementById('login-error').classList.remove('hidden');
+      }
+    }
+
+    function showAdminDashboard() {
+      document.getElementById('login-view').classList.add('hidden');
+      document.getElementById('dashboard-view').classList.remove('hidden');
+      document.getElementById('admin-nav-actions').classList.remove('hidden');
+      document.getElementById('admin-role-badge').textContent = sessionStorage.getItem('sam_active_admin');
+      renderAdminTables();
+    }
+
+    function switchTab(tab) {
+      ['students', 'questions', 'materials', 'tests', 'ssat'].forEach(t => {
+        document.getElementById(`sec-${t}`).classList.add('hidden');
+        document.getElementById(`tab-btn-${t}`).className = 'px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 text-slate-300 border border-slate-800';
+      });
+      document.getElementById(`sec-${tab}`).classList.remove('hidden');
+      document.getElementById(`tab-btn-${tab}`).className = 'px-4 py-2 rounded-xl text-xs font-bold bg-amber-500 text-slate-950';
+    }
+
+    function adminAddStudent(e) {
+      e.preventDefault();
+      let students = JSON.parse(localStorage.getItem('sam_students') || '[]');
+      students.unshift({
+        name: document.getElementById('add-student-name').value,
+        roll: document.getElementById('add-student-roll').value,
+        classGrade: document.getElementById('add-student-class').value,
+        phone: document.getElementById('add-student-phone').value,
+        pass: document.getElementById('add-student-pass').value
+      });
+      localStorage.setItem('sam_students', JSON.stringify(students));
+      e.target.reset();
+      renderAdminTables();
+    }
+
+    function adminSaveQuestion(e) {
+      e.preventDefault();
+      let questions = JSON.parse(localStorage.getItem('sam_exam_questions') || '[]');
+      questions.push({
+        question: document.getElementById('q-text').value,
+        optA: document.getElementById('q-a').value,
+        optB: document.getElementById('q-b').value,
+        optC: document.getElementById('q-c').value,
+        optD: document.getElementById('q-d').value,
+        correct: document.getElementById('q-ans').value
+      });
+      localStorage.setItem('sam_exam_questions', JSON.stringify(questions));
+      e.target.reset();
+      renderAdminTables();
+    }
+
+    function adminAddMaterial(e) {
+      e.preventDefault();
+      let materials = JSON.parse(localStorage.getItem('sam_materials') || '[]');
+      materials.unshift({ title: document.getElementById('mat-title').value, subject: document.getElementById('mat-sub').value, url: document.getElementById('mat-url').value });
+      localStorage.setItem('sam_materials', JSON.stringify(materials));
+      e.target.reset();
+      renderAdminTables();
+    }
+
+    function adminAddTest(e) {
+      e.preventDefault();
+      let tests = JSON.parse(localStorage.getItem('sam_tests') || '[]');
+      tests.unshift({ title: document.getElementById('test-title').value, date: document.getElementById('test-date').value, url: document.getElementById('test-url').value });
+      localStorage.setItem('sam_tests', JSON.stringify(tests));
+      e.target.reset();
+      renderAdminTables();
+    }
+
+    function renderAdminTables() {
+      const students = JSON.parse(localStorage.getItem('sam_students') || '[]');
+      document.getElementById('tbl-students').innerHTML = students.map((s, i) => `
+        <tr class="border-b border-slate-800"><td class="py-2.5 px-4 font-bold text-amber-400">${s.roll}</td><td class="py-2.5 px-4 font-bold text-white">${s.name}</td><td class="py-2.5 px-4">${s.classGrade}</td><td class="py-2.5 px-4">${s.phone}</td><td class="py-2.5 px-4 font-bold text-sky-400">${s.pass}</td><td class="py-2.5 px-4"><button onclick="deleteItem('sam_students', ${i})" class="text-rose-400 font-bold">Delete</button></td></tr>
+      `).join('');
+
+      const questions = JSON.parse(localStorage.getItem('sam_exam_questions') || '[]');
+      document.getElementById('tbl-questions').innerHTML = questions.map((q, i) => `
+        <tr class="border-b border-slate-800"><td class="py-2.5 px-4 font-bold text-amber-400">#${i+1}</td><td class="py-2.5 px-4 font-bold text-white">${q.question}</td><td class="py-2.5 px-4 text-emerald-400 font-bold">Opt ${q.correct}</td><td class="py-2.5 px-4"><button onclick="deleteItem('sam_exam_questions', ${i})" class="text-rose-400 font-bold">Delete</button></td></tr>
+      `).join('');
+
+      const materials = JSON.parse(localStorage.getItem('sam_materials') || '[]');
+      document.getElementById('tbl-materials').innerHTML = materials.map((m, i) => `
+        <tr class="border-b border-slate-800"><td class="py-2.5 px-4 font-bold text-sky-400">${m.subject}</td><td class="py-2.5 px-4 text-white">${m.title}</td><td class="py-2.5 px-4"><button onclick="deleteItem('sam_materials', ${i})" class="text-rose-400 font-bold">Delete</button></td></tr>
+      `).join('');
+
+      const tests = JSON.parse(localStorage.getItem('sam_tests') || '[]');
+      document.getElementById('tbl-tests').innerHTML = tests.map((t, i) => `
+        <tr class="border-b border-slate-800"><td class="py-2.5 px-4 text-white font-bold">${t.title}</td><td class="py-2.5 px-4 text-amber-400">${t.date}</td><td class="py-2.5 px-4"><button onclick="deleteItem('sam_tests', ${i})" class="text-rose-400 font-bold">Delete</button></td></tr>
+      `).join('');
+
+      const ssat = JSON.parse(localStorage.getItem('sam_ssat_candidates') || '[]');
+      document.getElementById('tbl-ssat').innerHTML = ssat.map((c, i) => `
+        <tr class="border-b border-slate-800"><td class="py-2.5 px-4 font-bold text-amber-400">${c.regNo}</td><td class="py-2.5 px-4 font-bold text-white">${c.name}</td><td class="py-2.5 px-4">${c.classGrade}</td><td class="py-2.5 px-4 text-sky-400">${c.mode}</td><td class="py-2.5 px-4">${c.phone}</td><td class="py-2.5 px-4"><button onclick="deleteItem('sam_ssat_candidates', ${i})" class="text-rose-400 font-bold">Delete</button></td></tr>
+      `).join('');
+    }
+
+    function deleteItem(key, idx) {
+      let arr = JSON.parse(localStorage.getItem(key) || '[]');
+      arr.splice(idx, 1);
+      localStorage.setItem(key, JSON.stringify(arr));
+      renderAdminTables();
+    }
+
+    function logoutAdmin() {
+      sessionStorage.removeItem('sam_active_admin');
+      location.reload();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      if (sessionStorage.getItem('sam_active_admin')) showAdminDashboard();
+    });
+  </script>
+</body>
+</html>
+
+  
