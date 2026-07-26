@@ -1,15 +1,15 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sam Academy of Science | Class 8-12, JEE & NEET Coaching</title>
+  <title>Sam Academy of Science | Class 8-12, JEE & NEET Coaching in Nagpur</title>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
   
@@ -25,9 +25,10 @@
               600: '#0369a1',
               700: '#075985',
               900: '#0c4a6e',
-              950: '#082f49',
+              950: '#030712',
             },
             accent: {
+              300: '#fcd34d',
               400: '#fbbf24',
               500: '#f59e0b',
               600: '#d97706',
@@ -43,21 +44,46 @@
   </script>
   <style>
     ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #082f49; }
+    ::-webkit-scrollbar-track { background: #030712; }
     ::-webkit-scrollbar-thumb { background: #0369a1; border-radius: 4px; }
     ::-webkit-scrollbar-thumb:hover { background: #0284c7; }
 
+    /* Custom Glassmorphism UI */
     .glass-card {
-      background: rgba(12, 74, 110, 0.4);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .glass-card-accent {
-      background: rgba(245, 158, 11, 0.08);
-      backdrop-filter: blur(12px);
+      background: rgba(245, 158, 11, 0.06);
+      backdrop-filter: blur(16px);
       border: 1px solid rgba(245, 158, 11, 0.25);
     }
+
+    /* Floating Mathematical Formulas Keyframe Animation */
+    @keyframes floatFormula {
+      0% { transform: translateY(0px) rotate(0deg); opacity: 0.15; }
+      50% { transform: translateY(-20px) rotate(3deg); opacity: 0.35; }
+      100% { transform: translateY(0px) rotate(0deg); opacity: 0.15; }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.08); }
+    }
+
+    @keyframes spinOrbit {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .animate-float-1 { animation: floatFormula 7s ease-in-out infinite; }
+    .animate-float-2 { animation: floatFormula 9s ease-in-out infinite 1.5s; }
+    .animate-float-3 { animation: floatFormula 8s ease-in-out infinite 3s; }
+    .animate-float-4 { animation: floatFormula 10s ease-in-out infinite 2s; }
+    .animate-pulse-glow { animation: pulseGlow 6s ease-in-out infinite; }
+    .animate-spin-orbit { animation: spinOrbit 25s linear infinite; }
 
     @media print {
       body * { visibility: hidden; }
@@ -67,29 +93,41 @@
     }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans selection:bg-amber-400 selection:text-slate-950">
+<body class="bg-slate-950 text-slate-100 font-sans selection:bg-amber-400 selection:text-slate-950 relative overflow-x-hidden">
+
+  <!-- Floating WhatsApp Quick Enquiry Button -->
+  <a href="https://wa.me/919021632248?text=Hi%20Sam%20Academy%20of%20Science%2C%20I%20want%20to%20inquire%20about%20admissions%20and%20scholarship%20tests." 
+     target="_blank" 
+     class="fixed bottom-6 right-6 z-50 p-3.5 bg-emerald-500 hover:bg-emerald-400 text-white rounded-full shadow-2xl shadow-emerald-500/40 transition transform hover:scale-110 active:scale-95 flex items-center gap-2 group" 
+     title="Chat with Us on WhatsApp">
+    <span class="absolute -top-1 -right-1 w-3.5 h-3.5 bg-amber-400 rounded-full border-2 border-slate-950 animate-ping"></span>
+    <i data-lucide="message-circle" class="w-6 h-6 fill-current"></i>
+    <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 ease-in-out whitespace-nowrap text-xs font-bold pl-1 pr-2 hidden sm:inline-block">
+      Chat on WhatsApp
+    </span>
+  </a>
 
   <!-- Top Announcement Bar -->
-  <div class="bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-slate-950 text-xs sm:text-sm font-bold py-2.5 px-4 text-center flex items-center justify-center gap-2 shadow-md">
-    <span class="bg-slate-950 text-amber-400 text-[10px] uppercase font-extrabold px-2 py-0.5 rounded-full">S-SAT 2026 Live</span>
+  <div class="bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-slate-950 text-xs sm:text-sm font-bold py-2.5 px-4 text-center flex items-center justify-center gap-2 shadow-md z-40 relative">
+    <span class="bg-slate-950 text-amber-400 text-[10px] uppercase font-black px-2 py-0.5 rounded-full">S-SAT 2026 Live</span>
     <span>Take Scholarship Test Online from Home or Offline at Nagpur Campus!</span>
-    <button onclick="scrollToSSAT()" class="underline hover:opacity-80 transition font-extrabold hidden sm:inline ml-1">Register Now →</button>
+    <button onclick="scrollToSSAT()" class="underline hover:opacity-80 transition font-extrabold hidden sm:inline ml-1">Register For S-SAT →</button>
   </div>
 
   <!-- Navigation Bar -->
-  <nav class="sticky top-0 z-50 bg-slate-950/85 backdrop-blur-md border-b border-slate-800/80 px-4 sm:px-8 py-3.5">
+  <nav class="sticky top-0 z-40 bg-slate-950/90 backdrop-blur-md border-b border-slate-800/80 px-4 sm:px-8 py-3.5">
     <div class="max-w-7xl mx-auto flex items-center justify-between">
       
       <!-- Logo -->
       <a href="#" class="flex items-center gap-3">
         <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 via-blue-600 to-indigo-600 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-sky-500/20">
-          <i data-lucide="atom" class="w-6 h-6"></i>
+          <i data-lucide="atom" class="w-6 h-6 animate-spin-slow"></i>
         </div>
         <div>
           <span class="font-heading text-lg sm:text-xl font-extrabold tracking-tight text-white block leading-tight">
             Sam Academy <span class="text-sky-400">of Science</span>
           </span>
-          <span class="text-[10px] tracking-widest text-slate-400 uppercase font-semibold block">Class 8-12 • JEE • NEET</span>
+          <span class="text-[10px] tracking-widest text-slate-400 uppercase font-semibold block">Class 8-12 • JEE • NEET • Nagpur</span>
         </div>
       </a>
 
@@ -97,6 +135,8 @@
       <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-300">
         <a href="#courses" class="hover:text-sky-400 transition">Courses</a>
         <a href="#ssat-section" class="text-amber-400 font-bold hover:text-amber-300 transition flex items-center gap-1"><i data-lucide="award" class="w-4 h-4"></i> S-SAT Test</a>
+        <a href="#gallery" class="hover:text-sky-400 transition">Campus Gallery</a>
+        <a href="#testimonials" class="hover:text-sky-400 transition">Reviews</a>
         <a href="#scholarship-calc" class="hover:text-sky-400 transition">Scholarship Estimator</a>
         <a href="#enroll" class="hover:text-sky-400 transition">Contact Us</a>
       </div>
@@ -115,24 +155,61 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- Hero Section with Floating Formulas & Physics Background -->
   <section class="relative pt-12 sm:pt-20 pb-20 sm:pb-28 px-4 sm:px-8 overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+    
+    <!-- Animated Atomic Orbital Graphic Backdrop -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] opacity-15 pointer-events-none animate-spin-orbit">
+      <div class="w-full h-full rounded-full border-2 border-dashed border-sky-400/50 flex items-center justify-center">
+        <div class="w-3/4 h-3/4 rounded-full border-2 border-dashed border-amber-400/50 flex items-center justify-center">
+          <div class="w-1/2 h-1/2 rounded-full border-2 border-dashed border-indigo-400/50"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating Physics, Chemistry & Math Equations -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden text-xs sm:text-sm font-mono font-bold text-sky-300/30 select-none">
+      <div class="absolute top-12 left-[10%] animate-float-1">$$\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}$$</div>
+      <div class="absolute top-28 right-[12%] animate-float-2 text-amber-300/30">$$E = h\nu = \frac{hc}{\lambda}$$</div>
+      <div class="absolute top-60 left-[5%] animate-float-3 text-emerald-300/30">$$\vec{F} = q(\vec{E} + \vec{v}\times\vec{B})$$</div>
+      <div class="absolute bottom-20 right-[8%] animate-float-4 text-purple-300/30">$$\Delta G^\circ = -RT \ln K$$</div>
+      <div class="absolute bottom-32 left-[18%] animate-float-2 text-sky-400/30">$$\mathrm{pH} = -\log[\mathrm{H}^+] = 14 - \mathrm{pOH}$$</div>
+      <div class="absolute top-40 left-[45%] animate-float-1 text-amber-400/25">$$\lim_{x \to 0} \frac{\sin x}{x} = 1$$</div>
+    </div>
+
+    <!-- Ambient Glowing Light Orbs -->
+    <div class="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-sky-500/15 rounded-full blur-3xl pointer-events-none animate-pulse-glow"></div>
+    <div class="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-amber-500/15 rounded-full blur-3xl pointer-events-none animate-pulse-glow"></div>
+
     <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
       
       <!-- Text Column -->
       <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-sky-400 text-xs font-semibold shadow-sm">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-sky-400 text-xs font-semibold shadow-xl">
           <i data-lucide="sparkles" class="w-4 h-4 text-amber-400"></i>
-          <span>#1 Science & Competitive Exam Coaching Institute in Nagpur</span>
+          <span>Nagpur's Premier Science & Entrance Academy</span>
         </div>
 
-        <h1 class="font-heading text-4xl sm:text-6xl font-extrabold text-white leading-[1.12] tracking-tight">
-          Master Science & Ace <span class="bg-gradient-to-r from-sky-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">JEE & NEET</span> with Confidence.
+        <h1 class="font-heading text-4xl sm:text-6xl font-black text-white leading-[1.12] tracking-tight">
+          Master Science & Ace <span class="bg-gradient-to-r from-sky-400 via-blue-400 to-amber-400 bg-clip-text text-transparent">JEE & NEET</span> with Confidence.
         </h1>
 
         <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-          Comprehensive foundation courses for <strong>Class 8, 9 & 10</strong> along with specialized, result-oriented batches for <strong>Class 11, 12, JEE Main, JEE Advanced & NEET</strong>.
+          Comprehensive foundation courses for <strong>Class 8, 9 & 10</strong> along with specialized, result-oriented batches for <strong>Class 11, 12, JEE Main, JEE Advanced & NEET</strong> in Nagpur.
         </p>
+
+        <!-- Highlights Badges -->
+        <div class="flex flex-wrap justify-center lg:justify-start gap-3 pt-1 text-xs font-semibold text-slate-300">
+          <div class="flex items-center gap-1.5 bg-slate-900/80 border border-slate-800 px-3 py-1.5 rounded-lg shadow">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i> IITian & AIIMS Faculty
+          </div>
+          <div class="flex items-center gap-1.5 bg-slate-900/80 border border-slate-800 px-3 py-1.5 rounded-lg shadow">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i> Small Batch Size (Max 30)
+          </div>
+          <div class="flex items-center gap-1.5 bg-slate-900/80 border border-slate-800 px-3 py-1.5 rounded-lg shadow">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i> Daily Doubt Desks
+          </div>
+        </div>
 
         <!-- Hero Actions -->
         <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
@@ -140,37 +217,37 @@
             <i data-lucide="award" class="w-5 h-5"></i>
             <span>Register For S-SAT Test</span>
           </button>
-          <a href="#courses" class="w-full sm:w-auto px-8 py-4 bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 font-bold rounded-xl transition text-center flex items-center justify-center gap-2">
+          <a href="#courses" class="w-full sm:w-auto px-8 py-4 bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-slate-800 font-bold rounded-xl transition text-center flex items-center justify-center gap-2">
             <i data-lucide="book-open" class="w-4 h-4 text-sky-400"></i>
             <span>Explore All Batches</span>
           </a>
         </div>
       </div>
 
-      <!-- Quick Inquiry Column -->
+      <!-- Enhanced Quick Counseling Form -->
       <div class="lg:col-span-5 relative">
         <div class="glass-card-accent rounded-3xl p-6 sm:p-8 relative shadow-2xl border border-amber-500/30">
           
           <div class="flex items-center justify-between mb-6">
             <div>
               <span class="text-amber-400 text-xs font-bold uppercase tracking-wider block">Start Your Journey</span>
-              <h3 class="text-xl font-heading font-extrabold text-white">Get Free Academic Counseling</h3>
+              <h3 class="text-xl font-heading font-extrabold text-white">Book Free Demo Class</h3>
             </div>
             <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold">
               <i data-lucide="user-check" class="w-5 h-5"></i>
             </div>
           </div>
 
-          <form onsubmit="handleInquiry(event)" class="space-y-4">
+          <form onsubmit="handleInquiry(event)" class="space-y-3.5">
             <div>
               <label class="block text-xs font-semibold text-slate-300 mb-1">Student's Full Name *</label>
-              <input type="text" id="inquiry-name" required placeholder="e.g. Rahul Sharma" class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-sky-500">
+              <input type="text" id="inquiry-name" required placeholder="e.g. Rahul Sharma" class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-slate-100 focus:outline-none focus:border-sky-500">
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
                 <label class="block text-xs font-semibold text-slate-300 mb-1">Class / Grade *</label>
-                <select id="inquiry-class" required class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-3 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-sky-500">
+                <select id="inquiry-class" required class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-3 py-2.5 text-xs text-slate-100 focus:outline-none focus:border-sky-500">
                   <option value="">Select Class</option>
                   <option>Class 8th Foundation</option>
                   <option>Class 9th Foundation</option>
@@ -182,1114 +259,106 @@
               </div>
 
               <div>
-                <label class="block text-xs font-semibold text-slate-300 mb-1">Primary Goal *</label>
-                <select id="inquiry-goal" required class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-3 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-sky-500">
-                  <option value="">Target Exam</option>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Target Stream *</label>
+                <select id="inquiry-goal" required class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-3 py-2.5 text-xs text-slate-100 focus:outline-none focus:border-sky-500">
+                  <option value="">Target Goal</option>
                   <option>JEE Main & Advanced</option>
                   <option>NEET Medical</option>
                   <option>Board Exam Excellence</option>
-                  <option>Olympiads / NTSE Foundation</option>
+                  <option>Olympiads / NTSE</option>
                 </select>
               </div>
             </div>
 
-            <div>
-              <label class="block text-xs font-semibold text-slate-300 mb-1">Parent's / Student Phone *</label>
-              <input type="tel" id="inquiry-phone" required placeholder="+91 90216 32248" class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-sky-500">
-            </div>
-
-            <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-extrabold rounded-xl text-sm shadow-lg shadow-amber-500/20 transition transform active:scale-95">
-              Book Seat For Demo Class
-            </button>
-          </form>
-
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Courses Section -->
-  <section id="courses" class="py-20 px-4 sm:px-8 max-w-7xl mx-auto">
-    <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
-      <span class="text-sky-400 text-xs font-extrabold uppercase tracking-widest">Structured Programs</span>
-      <h2 class="text-3xl sm:text-5xl font-heading font-extrabold text-white">Courses Designed For Top Ranks</h2>
-      <p class="text-slate-400 text-base">Step-by-step curriculum carefully crafted from fundamental conceptual clarity to advanced problem solving.</p>
-    </div>
-
-    <!-- Course Cards Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- Card 1: Junior Foundation -->
-      <div class="glass-card p-6 rounded-2xl flex flex-col justify-between border-t-2 border-t-sky-500 hover:border-sky-400 transition">
-        <div>
-          <div class="flex justify-between items-start mb-4">
-            <span class="px-3 py-1 bg-sky-500/10 text-sky-400 text-xs font-bold rounded-full border border-sky-500/20">Class 8th, 9th & 10th</span>
-            <i data-lucide="brain" class="w-6 h-6 text-sky-400"></i>
-          </div>
-          <h3 class="text-xl font-heading font-bold text-white mb-2">Science & Math Foundation</h3>
-          <p class="text-slate-400 text-xs leading-relaxed mb-6">
-            Strengthen core fundamentals in Physics, Chemistry, Biology & Mathematics. Prepares students early for Olympiads, NTSE, and high school boards.
-          </p>
-        </div>
-        <a href="#enroll" class="w-full py-3 bg-slate-900 hover:bg-slate-800 border border-slate-700 text-white font-bold rounded-xl text-xs text-center transition flex items-center justify-center gap-2">
-          <span>Enroll In Foundation Batch</span>
-          <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-sky-400"></i>
-        </a>
-      </div>
-
-      <!-- Card 2: JEE Main & Advanced -->
-      <div class="glass-card p-6 rounded-2xl flex flex-col justify-between border-t-2 border-t-amber-500 hover:border-amber-400 transition relative">
-        <div class="absolute -top-3 right-6 bg-amber-500 text-slate-950 text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full">High Demand</div>
-        <div>
-          <div class="flex justify-between items-start mb-4">
-            <span class="px-3 py-1 bg-amber-500/10 text-amber-400 text-xs font-bold rounded-full border border-amber-500/20">Class 11, 12 & Droppers</span>
-            <i data-lucide="cpu" class="w-6 h-6 text-amber-400"></i>
-          </div>
-          <h3 class="text-xl font-heading font-bold text-white mb-2">JEE Target Batch (PCM)</h3>
-          <p class="text-slate-400 text-xs leading-relaxed mb-6">
-            Rigorous coaching in Physics, Chemistry & Mathematics with numerical problem-solving techniques specifically for IIT-JEE Main & Advanced.
-          </p>
-        </div>
-        <a href="#enroll" class="w-full py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold rounded-xl text-xs text-center shadow-lg shadow-amber-500/20 transition flex items-center justify-center gap-2">
-          <span>Join JEE Target Batch</span>
-          <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-        </a>
-      </div>
-
-      <!-- Card 3: NEET Medical Target -->
-      <div class="glass-card p-6 rounded-2xl flex flex-col justify-between border-t-2 border-t-emerald-500 hover:border-emerald-400 transition">
-        <div>
-          <div class="flex justify-between items-start mb-4">
-            <span class="px-3 py-1 bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded-full border border-emerald-500/20">Class 11, 12 & Repeater</span>
-            <i data-lucide="heart-pulse" class="w-6 h-6 text-emerald-400"></i>
-          </div>
-          <h3 class="text-xl font-heading font-bold text-white mb-2">NEET Medical Target (PCB)</h3>
-          <p class="text-slate-400 text-xs leading-relaxed mb-6">
-            Focused, NCERT-centric teaching for Physics, Chemistry, Botany & Zoology. Structured to help students score 680+ in NEET Medical Entrance.
-          </p>
-        </div>
-        <a href="#enroll" class="w-full py-3 bg-slate-900 hover:bg-slate-800 border border-slate-700 text-white font-bold rounded-xl text-xs text-center transition flex items-center justify-center gap-2">
-          <span>Join NEET Medical Batch</span>
-          <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-emerald-400"></i>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- S-SAT SCHOLARSHIP TEST SECTION -->
-  <section id="ssat-section" class="py-20 px-4 sm:px-8 max-w-7xl mx-auto">
-    <div class="glass-card-accent rounded-3xl p-8 sm:p-12 relative overflow-hidden border-2 border-amber-500/40 shadow-2xl">
-      
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-        
-        <!-- Left Info -->
-        <div class="lg:col-span-6 space-y-5">
-          <div class="inline-flex items-center gap-2 px-3 py-1 bg-amber-500 text-slate-950 rounded-full text-xs font-black uppercase tracking-wider">
-            <i data-lucide="award" class="w-4 h-4"></i> Official Scholarship Exam
-          </div>
-
-          <h2 class="text-3xl sm:text-5xl font-heading font-extrabold text-white leading-tight">
-            S-SAT 2026 <br>
-            <span class="text-amber-400">Sam Scholarship Admission Test</span>
-          </h2>
-
-          <p class="text-slate-300 text-sm leading-relaxed">
-            Unlock up to <strong>100% Fee Scholarship</strong> for Class 8th to 12th, JEE Main & Advanced, and NEET Medical prep. Choose your preferred exam mode below:
-          </p>
-
-          <!-- Modes Box -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-            <div class="p-4 bg-slate-950/90 rounded-2xl border border-sky-500/40 relative">
-              <div class="text-[10px] uppercase font-extrabold text-sky-400 flex items-center gap-1">
-                <i data-lucide="globe" class="w-3.5 h-3.5"></i> Mode 1: Online CBT
-              </div>
-              <div class="text-sm font-bold text-white mt-1">From Home (Instant)</div>
-              <div class="text-[11px] text-slate-400 mt-1">Take test online anytime with instant result scorecard & waiver.</div>
-            </div>
-
-            <div class="p-4 bg-slate-950/90 rounded-2xl border border-amber-500/40 relative">
-              <div class="text-[10px] uppercase font-extrabold text-amber-400 flex items-center gap-1">
-                <i data-lucide="building-2" class="w-3.5 h-3.5"></i> Mode 2: Offline Centre
-              </div>
-              <div class="text-sm font-bold text-white mt-1">Nagpur Academy Campus</div>
-              <div class="text-[11px] text-slate-400 mt-1">Hudkeshwar Main Road (Opp. Wellness Forever). Get Physical Admit Card.</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right Registration Form -->
-        <div class="lg:col-span-6 bg-slate-950 p-6 sm:p-8 rounded-2xl border border-slate-800 shadow-xl">
-          <h3 class="text-xl font-heading font-extrabold text-white mb-1">Register For S-SAT 2026</h3>
-          <p class="text-xs text-slate-400 mb-6">Select Online or Offline Centre mode to proceed.</p>
-
-          <form onsubmit="handleSSATRegister(event)" class="space-y-4">
-            <div>
-              <label class="block text-xs font-semibold text-slate-300 mb-1">Student's Full Name *</label>
-              <input type="text" id="ssat-student-name" required placeholder="Enter student's full name" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-amber-500">
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
-                <label class="block text-xs font-semibold text-slate-300 mb-1">Current Class *</label>
-                <select id="ssat-student-class" required class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-amber-500">
-                  <option value="">Select Class</option>
-                  <option>Class 8th</option>
-                  <option>Class 9th</option>
-                  <option>Class 10th</option>
-                  <option>Class 11th Science</option>
-                  <option>Class 12th Science</option>
-                  <option>Dropper Batch</option>
-                </select>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Contact Phone *</label>
+                <input type="tel" id="inquiry-phone" required placeholder="+91 90216 32248" class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-slate-100 focus:outline-none focus:border-sky-500">
               </div>
 
               <div>
-                <label class="block text-xs font-semibold text-slate-300 mb-1">Target Exam *</label>
-                <select id="ssat-student-goal" required class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-amber-500">
-                  <option value="">Choose Target</option>
-                  <option>JEE Main & Advanced</option>
-                  <option>NEET Medical</option>
-                  <option>Board Exam Excellence</option>
-                </select>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Email Address</label>
+                <input type="email" id="inquiry-email" placeholder="student@gmail.com" class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-slate-100 focus:outline-none focus:border-sky-500">
               </div>
             </div>
 
             <div>
-              <label class="block text-xs font-semibold text-slate-300 mb-1">Exam Mode Choice *</label>
-              <select id="ssat-exam-mode" required class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-amber-500 font-bold text-amber-400">
-                <option value="Online (CBT at Home)">💻 Online Mode (Take Test Online Now)</option>
-                <option value="Offline Centre (Nagpur Campus)">🏢 Offline Centre (Sam Academy Campus, Nagpur)</option>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">Preferred Batch Timing</label>
+              <select id="inquiry-timing" class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-3 py-2.5 text-xs text-slate-100 focus:outline-none focus:border-sky-500">
+                <option>Morning Batch (07:30 AM - 10:30 AM)</option>
+                <option>Afternoon Batch (02:00 PM - 05:00 PM)</option>
+                <option>Evening Batch (05:00 PM - 08:00 PM)</option>
+                <option>Weekend Special Integrated Batch</option>
               </select>
             </div>
 
-            <div>
-              <label class="block text-xs font-semibold text-slate-300 mb-1">Parent's Mobile Number *</label>
-              <input type="tel" id="ssat-student-phone" required placeholder="Mobile number for registration updates" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-amber-500">
-            </div>
-
-            <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-extrabold rounded-xl text-sm shadow-lg shadow-amber-500/20 transition transform active:scale-95">
-              Confirm S-SAT Registration
+            <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-extrabold rounded-xl text-sm shadow-lg shadow-amber-500/20 transition transform active:scale-95 flex items-center justify-center gap-2">
+              <span>Book Demo Class Now</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
             </button>
           </form>
-        </div>
 
+        </div>
       </div>
 
     </div>
   </section>
 
-  <!-- Enrollment & Contact Section -->
-  <section id="enroll" class="py-20 px-4 sm:px-8 max-w-5xl mx-auto">
-    <div class="glass-card rounded-3xl p-8 sm:p-12 border border-slate-800">
+  <!-- TRUST INDICATORS BAR -->
+  <section class="py-8 bg-slate-900/80 border-y border-slate-800/80 relative z-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
       
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-        
-        <!-- Left info -->
-        <div class="lg:col-span-5 space-y-6">
-          <span class="text-amber-400 text-xs font-extrabold uppercase tracking-widest">Connect With Us</span>
-          <h2 class="text-3xl font-heading font-extrabold text-white">Visit Or Call Sam Academy</h2>
-          <p class="text-slate-300 text-sm leading-relaxed">
-            Have questions about batch timings, fees, or scholarship tests? Walk into our Nagpur campus or drop an inquiry message.
-          </p>
-
-          <div class="space-y-4 pt-2 text-xs text-slate-300">
-            <div class="flex items-start gap-3">
-              <i data-lucide="map-pin" class="w-5 h-5 text-sky-400 shrink-0 mt-0.5"></i>
-              <div>
-                <strong class="block text-white text-sm mb-0.5">Academy Address:</strong>
-                Sam Academy of Science, Hudkeshwar Main Road, Opposite Wellness Forever, Nagpur, Maharashtra, India.
-              </div>
-            </div>
-
-            <div class="flex items-start gap-3">
-              <i data-lucide="phone" class="w-5 h-5 text-sky-400 shrink-0 mt-0.5"></i>
-              <div>
-                <strong class="block text-white text-sm mb-0.5">Contact Number:</strong>
-                <a href="tel:+919021632248" class="text-sky-400 hover:underline font-semibold">+91 90216 32248</a>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-3">
-              <i data-lucide="mail" class="w-5 h-5 text-sky-400 shrink-0 mt-0.5"></i>
-              <div>
-                <strong class="block text-white text-sm mb-0.5">Email Address:</strong>
-                <a href="mailto:shourya201116@gmail.com" class="text-sky-400 hover:underline">shourya201116@gmail.com</a>
-              </div>
-            </div>
-          </div>
+      <div class="glass-card p-4 sm:p-5 rounded-2xl flex items-center gap-4">
+        <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center shrink-0 font-bold text-xl">
+          🏆
         </div>
-
-        <!-- Form Right -->
-        <div class="lg:col-span-7 bg-slate-950/90 p-6 sm:p-8 rounded-2xl border border-slate-800">
-          <h3 class="text-xl font-heading font-bold text-white mb-4">Book A Free Counseling Session</h3>
-          
-          <form onsubmit="handleEnrollmentSubmit(event)" class="space-y-4">
-            <div>
-              <label class="block text-xs font-semibold text-slate-300 mb-1">Student Name *</label>
-              <input type="text" id="enroll-name" required placeholder="Enter student's full name" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-sky-500">
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-xs font-semibold text-slate-300 mb-1">Current Class *</label>
-                <select id="enroll-class" required class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-sky-500">
-                  <option value="">Choose Class</option>
-                  <option>Class 8th</option>
-                  <option>Class 9th</option>
-                  <option>Class 10th</option>
-                  <option>Class 11th Science</option>
-                  <option>Class 12th Science</option>
-                  <option>Passed Class 12th (Dropper)</option>
-                </select>
-              </div>
-
-              <div>
-                <label class="block text-xs font-semibold text-slate-300 mb-1">Target Stream *</label>
-                <select id="enroll-goal" required class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-sky-500">
-                  <option value="">Choose Exam Goal</option>
-                  <option>JEE Main & Advanced</option>
-                  <option>NEET Medical Entrance</option>
-                  <option>Board Exams + Foundation</option>
-                </select>
-              </div>
-            </div>
-
-            <div>
-              <label class="block text-xs font-semibold text-slate-300 mb-1">Contact Phone Number *</label>
-              <input type="tel" id="enroll-phone" required placeholder="Mobile number for SMS update" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-sky-500">
-            </div>
-
-            <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-extrabold rounded-xl text-sm shadow-lg shadow-sky-500/25 transition">
-              Confirm Free Demo & Consultation
-            </button>
-          </form>
-
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- THANK YOU MODAL POPUP -->
-  <div id="thank-you-modal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
-    <div class="bg-slate-900 border-2 border-emerald-500 rounded-3xl w-full max-w-md p-6 sm:p-8 text-center space-y-5 shadow-2xl relative">
-      <div class="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center mx-auto text-3xl">
-        🎉
-      </div>
-      <div>
-        <h3 class="text-2xl font-heading font-extrabold text-white">Thank You!</h3>
-        <p class="text-xs text-slate-300 mt-2 leading-relaxed">
-          Your demo session request has been registered at <strong class="text-amber-400">Sam Academy of Science</strong>!
-        </p>
-      </div>
-      <div class="p-4 bg-slate-950 rounded-2xl border border-slate-800 text-left text-xs space-y-1.5 text-slate-300">
-        <div>📍 <strong>Campus:</strong> Hudkeshwar Main Road, Opp. Wellness Forever, Nagpur</div>
-        <div>📞 <strong>Helpdesk:</strong> +91 90216 32248</div>
-        <div>💬 Our academic counselor will call you within 2 hours.</div>
-      </div>
-      <button onclick="closeThankYouModal()" class="w-full py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 text-slate-950 font-extrabold rounded-xl text-xs transition">
-        Close Window
-      </button>
-    </div>
-  </div>
-
-  <!-- LIVE ONLINE S-SAT EXAM SIMULATOR MODAL (LOADS DYNAMICALLY FROM ADMIN QUESTION BANK) -->
-  <div id="online-exam-modal" class="fixed inset-0 bg-slate-950/95 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
-    <div class="bg-slate-900 border-2 border-sky-500 rounded-3xl w-full max-w-3xl p-6 sm:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto">
-      
-      <div class="flex justify-between items-center border-b border-slate-800 pb-4 mb-6">
         <div>
-          <span class="text-xs font-bold text-sky-400 uppercase tracking-widest block">Live Online Exam Portal</span>
-          <h3 class="text-xl font-heading font-extrabold text-white">S-SAT 2026 Online Test</h3>
-        </div>
-        <div class="text-right">
-          <span class="text-[10px] text-slate-400 block uppercase font-bold">Time Remaining</span>
-          <div class="text-lg font-mono font-extrabold text-amber-400" id="exam-timer">15:00</div>
+          <div class="text-lg sm:text-xl font-heading font-extrabold text-white">1000+</div>
+          <div class="text-xs text-slate-400 font-semibold">Students Coached</div>
         </div>
       </div>
 
-      <!-- Test Body Loaded Dynamically -->
-      <form id="online-exam-form" onsubmit="submitOnlineExam(event)" class="space-y-6 text-sm text-slate-200">
-        <div id="exam-questions-container" class="space-y-6">
-          <!-- Dynamic Questions Render Here -->
+      <div class="glass-card p-4 sm:p-5 rounded-2xl flex items-center gap-4">
+        <div class="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center shrink-0 font-bold text-xl">
+          ⭐
         </div>
-
-        <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-slate-950 font-extrabold rounded-xl text-sm transition">
-          Submit Final Online S-SAT Test
-        </button>
-      </form>
-
-      <!-- Result Scorecard View -->
-      <div id="exam-result-scorecard" class="hidden text-center space-y-4 py-6">
-        <div class="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto text-3xl">🏆</div>
-        <h4 class="text-2xl font-heading font-extrabold text-white">Online Test Completed!</h4>
-        
-        <div class="p-4 bg-slate-950 rounded-2xl border border-slate-800 max-w-sm mx-auto space-y-2">
-          <div class="text-xs text-slate-400">Score & Performance</div>
-          <div class="text-xl font-bold text-white"><span id="exam-score-display">0</span> Points Scored</div>
-          <div class="text-xs text-slate-400 pt-2 border-t border-slate-800">Calculated Scholarship Waiver</div>
-          <div class="text-3xl font-extrabold text-amber-400" id="online-waiver-result">75% Fee Waiver</div>
-          <div class="text-[11px] text-slate-400 pt-1">Saved to your candidate profile in our Nagpur office system.</div>
-        </div>
-
-        <button onclick="closeOnlineExamModal()" class="px-6 py-2.5 bg-slate-800 text-white font-bold rounded-xl text-xs hover:bg-slate-700">Close Window</button>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- DIGITAL ADMIT CARD MODAL -->
-  <div id="admit-card-modal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
-    <div class="bg-slate-900 border-2 border-amber-500 rounded-3xl w-full max-w-xl p-6 sm:p-8 shadow-2xl relative">
-      <div class="no-print flex justify-between items-center mb-4">
-        <span class="text-xs font-bold text-emerald-400">✓ Centre Registration Confirmed!</span>
-        <button onclick="closeAdmitCard()" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
-      </div>
-
-      <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 text-slate-200 space-y-4">
-        <div class="flex items-center justify-between border-b border-slate-800 pb-4">
-          <div>
-            <h3 class="font-heading font-extrabold text-white text-lg">SAM ACADEMY OF SCIENCE</h3>
-            <span class="text-[11px] text-amber-400 font-bold uppercase block">OFFICIAL CENTRE ADMIT CARD</span>
-          </div>
-          <div class="text-right font-mono">
-            <span class="text-[10px] text-slate-400 block uppercase">Reg No</span>
-            <span class="text-sm font-bold text-amber-400" id="ticket-reg">SSAT-2026-9021</span>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-2 gap-4 text-xs">
-          <div>
-            <span class="text-slate-400 block text-[10px] uppercase">Candidate Name</span>
-            <strong class="text-white text-sm" id="ticket-name">Rahul Sharma</strong>
-          </div>
-          <div>
-            <span class="text-slate-400 block text-[10px] uppercase">Applied Class</span>
-            <strong class="text-sky-400" id="ticket-class">Class 12th Science</strong>
-          </div>
-          <div>
-            <span class="text-slate-400 block text-[10px] uppercase">Exam Mode</span>
-            <strong class="text-amber-400" id="ticket-mode">Offline Centre</strong>
-          </div>
-          <div>
-            <span class="text-slate-400 block text-[10px] uppercase">Reporting Schedule</span>
-            <strong class="text-slate-200" id="ticket-schedule">Upcoming Sunday, 09:30 AM</strong>
-          </div>
-        </div>
-
-        <div class="p-3 bg-slate-900 rounded-xl text-[11px] border border-slate-800 space-y-1">
-          <div class="font-bold text-white">Examination Centre Address:</div>
-          <div class="text-slate-300">Sam Academy Campus, Hudkeshwar Main Road, Opposite Wellness Forever, Nagpur, Maharashtra.</div>
-        </div>
-      </div>
-
-      <div class="no-print mt-6 flex justify-end gap-3">
-        <button onclick="closeAdmitCard()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold rounded-xl">Close</button>
-        <button onclick="window.print()" class="px-5 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-extrabold rounded-xl shadow-lg flex items-center gap-1.5">
-          <i data-lucide="printer" class="w-4 h-4"></i> Print Hall Ticket
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- STUDENT LOGIN MODAL -->
-  <div id="student-login-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
-    <div class="bg-slate-900 border border-sky-500/30 rounded-2xl w-full max-w-md p-6 shadow-2xl relative">
-      <div class="flex items-center justify-between mb-6">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-400 border border-sky-500/30 flex items-center justify-center">
-            <i data-lucide="graduation-cap" class="w-5 h-5"></i>
-          </div>
-          <div>
-            <h3 class="font-heading font-extrabold text-white text-lg">Student Portal Login</h3>
-            <p class="text-xs text-slate-400">Sam Academy Learning Dashboard</p>
-          </div>
-        </div>
-        <button onclick="closeStudentModal()" class="text-slate-400 hover:text-white p-1 rounded-lg">
-          <i data-lucide="x" class="w-5 h-5"></i>
-        </button>
-      </div>
-
-      <form onsubmit="handleStudentAuth(event)" class="space-y-4">
         <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Roll No / Registered Phone *</label>
-          <input type="text" id="student-id" required placeholder="Enter Roll No or Phone" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-sky-500">
+          <div class="text-lg sm:text-xl font-heading font-extrabold text-white">95%+</div>
+          <div class="text-xs text-slate-400 font-semibold">Board & Entrance Results</div>
         </div>
+      </div>
 
+      <div class="glass-card p-4 sm:p-5 rounded-2xl flex items-center gap-4">
+        <div class="w-12 h-12 rounded-xl bg-sky-500/20 text-sky-400 border border-sky-500/30 flex items-center justify-center shrink-0 font-bold text-xl">
+          👨‍🏫
+        </div>
         <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Password *</label>
-          <input type="password" id="student-pass" required placeholder="Enter password" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-sky-500">
+          <div class="text-lg sm:text-xl font-heading font-extrabold text-white">IITian & AIIMS</div>
+          <div class="text-xs text-slate-400 font-semibold">Expert Faculty</div>
         </div>
-
-        <div id="student-auth-error" class="hidden text-xs text-rose-400 font-semibold bg-rose-500/10 border border-rose-500/20 p-2.5 rounded-lg text-center">
-          Invalid Roll No or Password! Please check with administration.
-        </div>
-
-        <button type="submit" class="w-full py-3 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-bold rounded-xl text-sm shadow-lg shadow-sky-500/25 transition">
-          Login To Student Portal
-        </button>
-      </form>
-    </div>
-  </div>
-
-  <!-- PROTECTED STAFF MODAL -->
-  <div id="admin-login-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
-    <div class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-md p-6 shadow-2xl relative">
-      <div class="flex items-center justify-between mb-6">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/30 flex items-center justify-center">
-            <i data-lucide="shield-lock" class="w-5 h-5"></i>
-          </div>
-          <div>
-            <h3 class="font-heading font-extrabold text-white text-lg">Staff Portal</h3>
-            <p class="text-xs text-slate-400">Restricted Access</p>
-          </div>
-        </div>
-        <button onclick="closeAdminModal()" class="text-slate-400 hover:text-white p-1 rounded-lg">
-          <i data-lucide="x" class="w-5 h-5"></i>
-        </button>
       </div>
 
-      <form onsubmit="handleAdminAuth(event)" class="space-y-4">
+      <div class="glass-card p-4 sm:p-5 rounded-2xl flex items-center gap-4">
+        <div class="w-12 h-12 rounded-xl bg-purple-500/20 text-purple-400 border border-purple-500/30 flex items-center justify-center shrink-0 font-bold text-xl">
+          📍
+        </div>
         <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Select Role *</label>
-          <select id="admin-role" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-amber-500">
-            <option value="owner">Academy Owner</option>
-            <option value="manager">Branch Manager</option>
-          </select>
-        </div>
-
-        <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Access Password *</label>
-          <input type="password" id="admin-pass" required placeholder="Enter password" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-amber-500">
-        </div>
-
-        <div id="auth-error" class="hidden text-xs text-rose-400 font-semibold bg-rose-500/10 border border-rose-500/20 p-2.5 rounded-lg text-center">
-          Invalid Password! Please check your credentials.
-        </div>
-
-        <button type="submit" class="w-full py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl text-sm shadow-lg shadow-amber-500/20 transition">
-          Unlock Dashboard
-        </button>
-      </form>
-    </div>
-  </div>
-
-  <!-- FULL FEATURED ADMIN DASHBOARD -->
-  <section id="protected-admin-dashboard" class="hidden py-12 px-4 sm:px-8 bg-slate-900 border-t-2 border-amber-500">
-    <div class="max-w-7xl mx-auto space-y-6">
-      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-slate-950 p-6 rounded-2xl border border-slate-800">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center font-bold">
-            <i data-lucide="shield-check" class="w-6 h-6"></i>
-          </div>
-          <div>
-            <h2 class="text-xl font-heading font-extrabold text-white flex items-center gap-2">
-              <span id="active-user-role">Owner</span> Dashboard
-              <span class="text-xs font-mono font-normal bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/20">Authenticated Session</span>
-            </h2>
-            <p class="text-xs text-slate-400">Manage Question Bank, S-SAT Test Candidates, Students & Inquiries.</p>
-          </div>
-        </div>
-
-        <div class="flex items-center gap-3">
-          <button onclick="logoutAdmin()" class="px-3.5 py-2 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/20 rounded-xl text-xs font-bold transition">
-            Logout Staff
-          </button>
-        </div>
-      </div>
-
-      <!-- Navigation Tabs inside Admin -->
-      <div class="flex flex-wrap gap-2 border-b border-slate-800 pb-3">
-        <button onclick="switchAdminTab('questions')" id="tab-btn-questions" class="px-4 py-2 rounded-xl text-xs font-bold bg-amber-500 text-slate-950 transition">
-          ❓ S-SAT Exam Question Bank (<span id="admin-questions-count">0</span>)
-        </button>
-        <button onclick="switchAdminTab('ssat')" id="tab-btn-ssat" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-950 text-slate-300 border border-slate-800 hover:text-white transition">
-          🏆 Registered Candidates (<span id="admin-ssat-count">0</span>)
-        </button>
-        <button onclick="switchAdminTab('students')" id="tab-btn-students" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-950 text-slate-300 border border-slate-800 hover:text-white transition">
-          👨‍🎓 Students & Passwords
-        </button>
-        <button onclick="switchAdminTab('inquiries')" id="tab-btn-inquiries" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-950 text-slate-300 border border-slate-800 hover:text-white transition">
-          📋 Student Inquiries (<span id="admin-inquiry-count">0</span>)
-        </button>
-      </div>
-
-      <!-- TAB 1: EDIT / ADD / CHANGE SCHOLARSHIP EXAM QUESTIONS -->
-      <div id="admin-sec-questions" class="space-y-6">
-        <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 space-y-4">
-          <h3 class="text-base font-heading font-bold text-white mb-2" id="q-form-title">+ Add New Question to S-SAT Exam</h3>
-          <form onsubmit="adminSaveQuestion(event)" class="space-y-4">
-            <input type="hidden" id="edit-q-index" value="-1">
-            
-            <div>
-              <label class="block text-xs font-semibold text-slate-300 mb-1">Question Statement *</label>
-              <textarea id="q-statement" required rows="2" placeholder="e.g. Acceleration due to gravity 'g' on Earth's surface is:" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-500"></textarea>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-[11px] text-slate-300 font-semibold mb-1">Option A *</label>
-                <input type="text" id="q-opt-a" required placeholder="Option A value" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
-              </div>
-              <div>
-                <label class="block text-[11px] text-slate-300 font-semibold mb-1">Option B *</label>
-                <input type="text" id="q-opt-b" required placeholder="Option B value" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
-              </div>
-              <div>
-                <label class="block text-[11px] text-slate-300 font-semibold mb-1">Option C *</label>
-                <input type="text" id="q-opt-c" required placeholder="Option C value" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
-              </div>
-              <div>
-                <label class="block text-[11px] text-slate-300 font-semibold mb-1">Option D *</label>
-                <input type="text" id="q-opt-d" required placeholder="Option D value" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
-              </div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-[11px] text-slate-300 font-semibold mb-1">Correct Answer Choice *</label>
-                <select id="q-correct" required class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-amber-400 font-bold">
-                  <option value="A">Option A is Correct</option>
-                  <option value="B">Option B is Correct</option>
-                  <option value="C">Option C is Correct</option>
-                  <option value="D">Option D is Correct</option>
-                </select>
-              </div>
-              <div class="flex items-end gap-2">
-                <button type="submit" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl text-xs py-2.5 transition">
-                  Save Question
-                </button>
-                <button type="button" onclick="resetQuestionForm()" class="px-4 py-2.5 bg-slate-800 text-slate-300 rounded-xl text-xs font-bold hover:bg-slate-700">Cancel</button>
-              </div>
-            </div>
-          </form>
-        </div>
-
-        <!-- Question List Table -->
-        <div class="bg-slate-950 rounded-2xl border border-slate-800 overflow-x-auto">
-          <div class="p-4 border-b border-slate-800 font-bold text-white text-sm">Live S-SAT Exam Question Bank</div>
-          <table class="w-full text-left border-collapse text-xs">
-            <thead>
-              <tr class="bg-slate-900 border-b border-slate-800 text-slate-400 font-extrabold uppercase">
-                <th class="py-3 px-4">Q#</th>
-                <th class="py-3 px-4">Question Statement</th>
-                <th class="py-3 px-4">Options</th>
-                <th class="py-3 px-4">Correct Choice</th>
-                <th class="py-3 px-4">Actions</th>
-              </tr>
-            </thead>
-            <tbody id="admin-questions-table"></tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- TAB 2: S-SAT CANDIDATES -->
-      <div id="admin-sec-ssat" class="hidden space-y-6">
-        <div class="bg-slate-950 rounded-2xl border border-slate-800 overflow-x-auto">
-          <table class="w-full text-left border-collapse text-xs">
-            <thead>
-              <tr class="bg-slate-900 border-b border-slate-800 text-slate-400 font-extrabold uppercase">
-                <th class="py-3 px-4">Reg No</th>
-                <th class="py-3 px-4">Candidate Name</th>
-                <th class="py-3 px-4">Class</th>
-                <th class="py-3 px-4">Exam Mode</th>
-                <th class="py-3 px-4">Phone</th>
-                <th class="py-3 px-4">Assigned Scholarship</th>
-                <th class="py-3 px-4">Actions</th>
-              </tr>
-            </thead>
-            <tbody id="admin-ssat-table"></tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- TAB 3: STUDENTS -->
-      <div id="admin-sec-students" class="hidden space-y-6">
-        <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800">
-          <h3 class="text-base font-heading font-bold text-white mb-4">+ Register New Student & Set Password</h3>
-          <form onsubmit="adminAddStudent(event)" class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <input type="text" id="add-student-name" required placeholder="Student Full Name" class="bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-xs text-white">
-            <input type="text" id="add-student-roll" required placeholder="Assign Roll No (e.g. SAM2026-001)" class="bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-xs text-white">
-            <select id="add-student-class" required class="bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
-              <option value="">Select Class</option>
-              <option>Class 8th</option>
-              <option>Class 9th</option>
-              <option>Class 10th</option>
-              <option>Class 11th Science</option>
-              <option>Class 12th Science</option>
-            </select>
-            <input type="tel" id="add-student-phone" required placeholder="Phone Number" class="bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-xs text-white">
-            <input type="password" id="add-student-pass" required placeholder="Create Login Password" class="bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-xs text-white">
-            <button type="submit" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl text-xs py-2 transition">
-              Create Student Account
-            </button>
-          </form>
-        </div>
-
-        <div class="bg-slate-950 rounded-2xl border border-slate-800 overflow-x-auto">
-          <table class="w-full text-left border-collapse text-xs">
-            <thead>
-              <tr class="bg-slate-900 border-b border-slate-800 text-slate-400 font-extrabold uppercase">
-                <th class="py-3 px-4">Roll No</th>
-                <th class="py-3 px-4">Student Name</th>
-                <th class="py-3 px-4">Class</th>
-                <th class="py-3 px-4">Phone</th>
-                <th class="py-3 px-4">Password</th>
-                <th class="py-3 px-4">Action</th>
-              </tr>
-            </thead>
-            <tbody id="admin-students-table"></tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- TAB 4: INQUIRIES -->
-      <div id="admin-sec-inquiries" class="hidden space-y-6">
-        <div class="bg-slate-950 rounded-2xl border border-slate-800 overflow-x-auto">
-          <table class="w-full text-left border-collapse text-xs">
-            <thead>
-              <tr class="bg-slate-900 border-b border-slate-800 text-slate-400 font-extrabold uppercase">
-                <th class="py-3 px-4">Date</th>
-                <th class="py-3 px-4">Name</th>
-                <th class="py-3 px-4">Class</th>
-                <th class="py-3 px-4">Goal</th>
-                <th class="py-3 px-4">Phone</th>
-                <th class="py-3 px-4">Action</th>
-              </tr>
-            </thead>
-            <tbody id="admin-leads-table"></tbody>
-          </table>
+          <div class="text-lg sm:text-xl font-heading font-extrabold text-white">Hudkeshwar</div>
+          <div class="text-xs text-slate-400 font-semibold">Nagpur Campus</div>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="py-12 px-4 sm:px-8 bg-slate-950 border-t border-slate-900 text-xs text-slate-500">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
-      <div class="flex items-center gap-3">
-        <div class="w-8 h-8 rounded-lg bg-sky-600 flex items-center justify-center text-white font-black text-sm">
-          <i data-lucide="atom" class="w-5 h-5"></i>
-        </div>
-        <div>
-          <span class="font-heading font-bold text-slate-200 block text-sm">Sam Academy of Science</span>
-          <span class="text-[10px] text-slate-400">Hudkeshwar Main Road, Opp. Wellness Forever, Nagpur</span>
-        </div>
+  <!-- ANIMATED STATISTICAL COUNTERS -->
+  <section id="stats-counter" class="py-16 sm:py-24 px-4 sm:px-8 max-w-7xl mx-auto">
+    <div class="glass-card-accent rounded-3xl p-8 sm:p-12 relative border border-amber-500/30 text-center">
+      <div class="max-w-2xl mx-auto mb-10">
+        <span class="text-amber-400 text-xs font-extrabold uppercase tracking-widest block">Proven Record</span>
+        <h2 class="text-2xl sm:text-4xl font-heading font-black text-white mt-1">Numbers Speak for Our Quality</h2>
       </div>
-      <p>© 2026 Sam Academy of Science. All rights reserved.</p>
-    </div>
-  </footer>
 
-  <!-- App Script Logic -->
-  <script>
-    lucide.createIcons();
-
-    const PASSWORDS = { owner: 'owner123', manager: 'sam2026' };
-
-    // Default Question Bank Seed
-    const defaultQuestions = [
-      {
-        question: "Acceleration due to gravity 'g' on the Earth's surface is approximately:",
-        optA: "9.8 m/s²",
-        optB: "12.5 m/s²",
-        optC: "6.4 m/s²",
-        optD: "15.0 m/s²",
-        correct: "A"
-      },
-      {
-        question: "What is the pH value of pure water at room temperature?",
-        optA: "0",
-        optB: "7",
-        optC: "14",
-        optD: "1",
-        correct: "B"
-      },
-      {
-        question: "If 2x + 6 = 20, then the value of x is:",
-        optA: "5",
-        optB: "7",
-        optC: "10",
-        optD: "12",
-        correct: "B"
-      }
-    ];
-
-    const defaultSSATCandidates = [
-      { regNo: 'SSAT-2026-9021', name: 'Rahul Sharma', classGrade: 'Class 12th', mode: 'Online (CBT at Home)', phone: '9021632248', scholarship: '75% Waiver' }
-    ];
-
-    const defaultStudents = [
-      { roll: 'SAM2026-001', name: 'Rahul Sharma', classGrade: 'Class 12th Science', phone: '9021632248', pass: 'sam123' }
-    ];
-
-    function getStored(key, fallback) {
-      return JSON.parse(localStorage.getItem(key) || JSON.stringify(fallback));
-    }
-
-    function setStored(key, val) {
-      localStorage.setItem(key, JSON.stringify(val));
-    }
-
-    function scrollToSSAT() {
-      document.getElementById('ssat-section').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    function showThankYouModal() {
-      document.getElementById('thank-you-modal').classList.remove('hidden');
-    }
-
-    function closeThankYouModal() {
-      document.getElementById('thank-you-modal').classList.add('hidden');
-    }
-
-    function handleInquiry(e) {
-      e.preventDefault();
-      storeInquiry({
-        name: document.getElementById('inquiry-name').value,
-        classGrade: document.getElementById('inquiry-class').value,
-        goal: document.getElementById('inquiry-goal').value,
-        phone: document.getElementById('inquiry-phone').value,
-        date: new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })
-      });
-      e.target.reset();
-      showThankYouModal();
-    }
-
-    function handleEnrollmentSubmit(e) {
-      e.preventDefault();
-      storeInquiry({
-        name: document.getElementById('enroll-name').value,
-        classGrade: document.getElementById('enroll-class').value,
-        goal: document.getElementById('enroll-goal').value,
-        phone: document.getElementById('enroll-phone').value,
-        date: new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })
-      });
-      e.target.reset();
-      showThankYouModal();
-    }
-
-    function storeInquiry(lead) {
-      let leads = JSON.parse(localStorage.getItem('sam_academy_leads') || '[]');
-      leads.unshift(lead);
-      localStorage.setItem('sam_academy_leads', JSON.stringify(leads));
-      renderAdminTables();
-    }
-
-    // S-SAT REGISTER HANDLER
-    function handleSSATRegister(e) {
-      e.preventDefault();
-      const name = document.getElementById('ssat-student-name').value;
-      const classGrade = document.getElementById('ssat-student-class').value;
-      const goal = document.getElementById('ssat-student-goal').value;
-      const mode = document.getElementById('ssat-exam-mode').value;
-      const phone = document.getElementById('ssat-student-phone').value;
-
-      const regNo = 'SSAT-2026-' + Math.floor(1000 + Math.random() * 9000);
-      const candidate = { regNo, name, classGrade, goal, mode, phone, scholarship: 'Pending Assessment' };
-
-      let ssatList = getStored('sam_ssat_candidates', defaultSSATCandidates);
-      ssatList.unshift(candidate);
-      setStored('sam_ssat_candidates', ssatList);
-
-      e.target.reset();
-
-      if (mode.includes('Online')) {
-        renderLiveExamQuestions();
-        document.getElementById('online-exam-modal').classList.remove('hidden');
-      } else {
-        document.getElementById('ticket-reg').textContent = regNo;
-        document.getElementById('ticket-name').textContent = name;
-        document.getElementById('ticket-class').textContent = classGrade;
-        document.getElementById('ticket-mode').textContent = mode;
-        document.getElementById('ticket-schedule').textContent = 'Upcoming Sunday, 09:30 AM';
-        document.getElementById('admit-card-modal').classList.remove('hidden');
-      }
-
-      renderAdminTables();
-    }
-
-    // RENDER LIVE EXAM FROM DYNAMIC ADMIN QUESTION BANK
-    function renderLiveExamQuestions() {
-      const questions = getStored('sam_exam_questions', defaultQuestions);
-      const container = document.getElementById('exam-questions-container');
-
-      if (questions.length === 0) {
-        container.innerHTML = `<div class="text-center py-6 text-slate-400">No questions added to the test by Admin yet. Please check back soon!</div>`;
-        return;
-      }
-
-      container.innerHTML = questions.map((q, idx) => `
-        <div class="p-4 bg-slate-950 rounded-2xl border border-slate-800 space-y-3">
-          <div class="font-bold text-white">Q${idx + 1}. ${q.question}</div>
-          <div class="space-y-2 text-xs">
-            <label class="flex items-center gap-2 p-2 bg-slate-900 rounded-lg hover:bg-slate-800 cursor-pointer">
-              <input type="radio" name="q_${idx}" value="A" required class="accent-sky-500"> A) ${q.optA}
-            </label>
-            <label class="flex items-center gap-2 p-2 bg-slate-900 rounded-lg hover:bg-slate-800 cursor-pointer">
-              <input type="radio" name="q_${idx}" value="B" class="accent-sky-500"> B) ${q.optB}
-            </label>
-            <label class="flex items-center gap-2 p-2 bg-slate-900 rounded-lg hover:bg-slate-800 cursor-pointer">
-              <input type="radio" name="q_${idx}" value="C" class="accent-sky-500"> C) ${q.optC}
-            </label>
-            <label class="flex items-center gap-2 p-2 bg-slate-900 rounded-lg hover:bg-slate-800 cursor-pointer">
-              <input type="radio" name="q_${idx}" value="D" class="accent-sky-500"> D) ${q.optD}
-            </label>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    function submitOnlineExam(e) {
-      if (e) e.preventDefault();
-      const questions = getStored('sam_exam_questions', defaultQuestions);
-      let score = 0;
-
-      questions.forEach((q, idx) => {
-        const selected = document.querySelector(`input[name="q_${idx}"]:checked`);
-        if (selected && selected.value === q.correct) {
-          score += 10;
-        }
-      });
-
-      let waiver = '30% Fee Waiver';
-      if (score >= (questions.length * 10 * 0.8)) waiver = '90% - 100% Fee Waiver';
-      else if (score >= (questions.length * 10 * 0.5)) waiver = '60% - 75% Fee Waiver';
-
-      document.getElementById('exam-score-display').textContent = score;
-      document.getElementById('online-waiver-result').textContent = waiver;
-
-      document.getElementById('online-exam-form').classList.add('hidden');
-      document.getElementById('exam-result-scorecard').classList.remove('hidden');
-    }
-
-    function closeOnlineExamModal() {
-      document.getElementById('online-exam-modal').classList.add('hidden');
-      document.getElementById('online-exam-form').classList.remove('hidden');
-      document.getElementById('exam-result-scorecard').classList.add('hidden');
-    }
-
-    function closeAdmitCard() {
-      document.getElementById('admit-card-modal').classList.add('hidden');
-    }
-
-    // PORTALS LOGIC
-    function openStudentModal() { document.getElementById('student-login-modal').classList.remove('hidden'); }
-    function closeStudentModal() { document.getElementById('student-login-modal').classList.add('hidden'); }
-    function openAdminModal() { document.getElementById('admin-login-modal').classList.remove('hidden'); }
-    function closeAdminModal() { document.getElementById('admin-login-modal').classList.add('hidden'); }
-
-    function handleAdminAuth(e) {
-      e.preventDefault();
-      const role = document.getElementById('admin-role').value;
-      const pass = document.getElementById('admin-pass').value;
-
-      if (pass === PASSWORDS[role]) {
-        sessionStorage.setItem('sam_admin_logged', 'true');
-        sessionStorage.setItem('sam_admin_role', role === 'owner' ? 'Owner' : 'Manager');
-        closeAdminModal();
-        showDashboard();
-      } else {
-        document.getElementById('auth-error').classList.remove('hidden');
-      }
-    }
-
-    function showDashboard() {
-      const role = sessionStorage.getItem('sam_admin_role') || 'Owner';
-      document.getElementById('active-user-role').textContent = role;
-      document.getElementById('protected-admin-dashboard').classList.remove('hidden');
-      renderAdminTables();
-      document.getElementById('protected-admin-dashboard').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    function logoutAdmin() {
-      sessionStorage.removeItem('sam_admin_logged');
-      document.getElementById('protected-admin-dashboard').classList.add('hidden');
-    }
-
-    function switchAdminTab(tab) {
-      ['questions', 'ssat', 'students', 'inquiries'].forEach(t => {
-        document.getElementById(`admin-sec-${t}`).classList.add('hidden');
-        document.getElementById(`tab-btn-${t}`).className = 'px-4 py-2 rounded-xl text-xs font-bold bg-slate-950 text-slate-300 border border-slate-800 hover:text-white transition';
-      });
-
-      document.getElementById(`admin-sec-${tab}`).classList.remove('hidden');
-      document.getElementById(`tab-btn-${tab}`).className = 'px-4 py-2 rounded-xl text-xs font-bold bg-amber-500 text-slate-950 transition';
-    }
-
-    // ADMIN QUESTION BANK MANAGEMENT
-    function adminSaveQuestion(e) {
-      e.preventDefault();
-      let questions = getStored('sam_exam_questions', defaultQuestions);
-      const editIdx = parseInt(document.getElementById('edit-q-index').value);
-
-      const qData = {
-        question: document.getElementById('q-statement').value,
-        optA: document.getElementById('q-opt-a').value,
-        optB: document.getElementById('q-opt-b').value,
-        optC: document.getElementById('q-opt-c').value,
-        optD: document.getElementById('q-opt-d').value,
-        correct: document.getElementById('q-correct').value
-      };
-
-      if (editIdx >= 0) {
-        questions[editIdx] = qData;
-        alert("Question updated successfully!");
-      } else {
-        questions.push(qData);
-        alert("New question added to S-SAT Exam!");
-      }
-
-      setStored('sam_exam_questions', questions);
-      resetQuestionForm();
-      renderAdminTables();
-    }
-
-    function adminEditQuestion(index) {
-      const questions = getStored('sam_exam_questions', defaultQuestions);
-      const q = questions[index];
-
-      document.getElementById('edit-q-index').value = index;
-      document.getElementById('q-form-title').textContent = `✏️ Editing Question #${index + 1}`;
-      document.getElementById('q-statement').value = q.question;
-      document.getElementById('q-opt-a').value = q.optA;
-      document.getElementById('q-opt-b').value = q.optB;
-      document.getElementById('q-opt-c').value = q.optC;
-      document.getElementById('q-opt-d').value = q.optD;
-      document.getElementById('q-correct').value = q.correct;
-    }
-
-    function adminDeleteQuestion(index) {
-      let questions = getStored('sam_exam_questions', defaultQuestions);
-      questions.splice(index, 1);
-      setStored('sam_exam_questions', questions);
-      renderAdminTables();
-    }
-
-    function resetQuestionForm() {
-      document.getElementById('edit-q-index').value = "-1";
-      document.getElementById('q-form-title').textContent = "+ Add New Question to S-SAT Exam";
-      document.getElementById('q-statement').value = "";
-      document.getElementById('q-opt-a').value = "";
-      document.getElementById('q-opt-b').value = "";
-      document.getElementById('q-opt-c').value = "";
-      document.getElementById('q-opt-d').value = "";
-      document.getElementById('q-correct').value = "A";
-    }
-
-    // RENDER ADMIN TABLES
-    function renderAdminTables() {
-      // Questions Table
-      const questions = getStored('sam_exam_questions', defaultQuestions);
-      document.getElementById('admin-questions-count').textContent = questions.length;
-      document.getElementById('admin-questions-table').innerHTML = questions.map((q, idx) => `
-        <tr class="border-b border-slate-800 text-slate-300">
-          <td class="py-3 px-4 font-mono font-bold text-amber-400">#${idx + 1}</td>
-          <td class="py-3 px-4 font-bold text-white max-w-xs">${q.question}</td>
-          <td class="py-3 px-4 text-[11px] text-slate-400">
-            A) ${q.optA} | B) ${q.optB}<br>
-            C) ${q.optC} | D) ${q.optD}
-          </td>
-          <td class="py-3 px-4 font-bold text-emerald-400">Option ${q.correct}</td>
-          <td class="py-3 px-4 space-x-1">
-            <button onclick="adminEditQuestion(${idx})" class="px-2 py-1 bg-sky-500/10 text-sky-400 rounded hover:bg-sky-500/20 font-bold">Edit</button>
-            <button onclick="adminDeleteQuestion(${idx})" class="px-2 py-1 bg-rose-500/10 text-rose-400 rounded hover:bg-rose-500/20 font-bold">Delete</button>
-          </td>
-        </tr>
-      `).join('');
-
-      // Candidates
-      const ssatList = getStored('sam_ssat_candidates', defaultSSATCandidates);
-      document.getElementById('admin-ssat-count').textContent = ssatList.length;
-      document.getElementById('admin-ssat-table').innerHTML = ssatList.map((cand, idx) => `
-        <tr class="border-b border-slate-800 text-slate-300">
-          <td class="py-3 px-4 font-mono font-bold text-amber-400">${cand.regNo}</td>
-          <td class="py-3 px-4 font-bold text-white">${cand.name}</td>
-          <td class="py-3 px-4">${cand.classGrade}</td>
-          <td class="py-3 px-4 text-sky-400 font-semibold">${cand.mode || 'Online'}</td>
-          <td class="py-3 px-4 font-mono">${cand.phone}</td>
-          <td class="py-3 px-4"><span class="px-2 py-0.5 bg-emerald-500/10 text-emerald-400 rounded font-bold border border-emerald-500/20">${cand.scholarship}</span></td>
-          <td class="py-3 px-4">
-            <button onclick="deleteSSATCandidate(${idx})" class="px-2 py-1 bg-rose-500/10 text-rose-400 rounded hover:bg-rose-500/20 font-bold">Delete</button>
-          </td>
-        </tr>
-      `).join('');
-
-      // Students
-      const students = getStored('sam_students', defaultStudents);
-      document.getElementById('admin-students-table').innerHTML = students.map((s, idx) => `
-        <tr class="border-b border-slate-800 text-slate-300">
-          <td class="py-3 px-4 font-bold text-amber-400 font-mono">${s.roll}</td>
-          <td class="py-3 px-4 font-bold text-white">${s.name}</td>
-          <td class="py-3 px-4">${s.classGrade}</td>
-          <td class="py-3 px-4 font-mono">${s.phone}</td>
-          <td class="py-3 px-4 font-mono font-bold text-sky-400">${s.pass}</td>
-          <td class="py-3 px-4">
-            <button onclick="adminDeleteStudent(${idx})" class="px-2 py-1 bg-rose-500/10 text-rose-400 rounded hover:bg-rose-500/20">Delete</button>
-          </td>
-        </tr>
-      `).join('');
-
-      // Inquiries
-      let leads = JSON.parse(localStorage.getItem('sam_academy_leads') || '[]');
-      document.getElementById('admin-inquiry-count').textContent = leads.length;
-      document.getElementById('admin-leads-table').innerHTML = leads.map((l, idx) => `
-        <tr class="border-b border-slate-800 text-slate-300">
-          <td class="py-3 px-4 text-slate-400">${l.date || 'Today'}</td>
-          <td class="py-3 px-4 font-bold text-white">${l.name}</td>
-          <td class="py-3 px-4">${l.classGrade}</td>
-          <td class="py-3 px-4">${l.goal}</td>
-          <td class="py-3 px-4 font-mono font-bold text-sky-400"><a href="tel:${l.phone}">${l.phone}</a></td>
-          <td class="py-3 px-4">
-            <button onclick="deleteLead(${idx})" class="px-2 py-1 bg-rose-500/10 text-rose-400 rounded hover:bg-rose-500/20">Delete</button>
-          </td>
-        </tr>
-      `).join('');
-    }
-
-    function deleteSSATCandidate(index) {
-      let ssatList = getStored('sam_ssat_candidates', defaultSSATCandidates);
-      ssatList.splice(index, 1);
-      setStored('sam_ssat_candidates', ssatList);
-      renderAdminTables();
-    }
-
-    function deleteLead(index) {
-      let leads = JSON.parse(localStorage.getItem('sam_academy_leads') || '[]');
-      leads.splice(index, 1);
-      localStorage.setItem('sam_academy_leads', JSON.stringify(leads));
-      renderAdminTables();
-    }
-
-    function adminAddStudent(e) {
-      e.preventDefault();
-      const students = getStored('sam_students', defaultStudents);
-      students.unshift({
-        name: document.getElementById('add-student-name').value,
-        roll: document.getElementById('add-student-roll').value,
-        classGrade: document.getElementById('add-student-class').value,
-        phone: document.getElementById('add-student-phone').value,
-        pass: document.getElementById('add-student-pass').value
-      });
-      setStored('sam_students', students);
-      renderAdminTables();
-      e.target.reset();
-      alert("Student account created successfully!");
-    }
-
-    function adminDeleteStudent(index) {
-      const students = getStored('sam_students', defaultStudents);
-      students.splice(index, 1);
-      setStored('sam_students', students);
-      renderAdminTables();
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-      if (sessionStorage.getItem('sam_admin_logged') === 'true') showDashboard();
-    });
-  </script>
-
-</body>
-</html>
-
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div>
+          <div class="text-3xl sm:text-5xl font-heading font-black text-amber-400" id="stat-s    
