@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-950">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Portal | Sam Academy of Science</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { brand: { 500: '#0284c7', 600: '#0369a1' }, accent: { 400: '#fbbf24', 500: '#f59e0b' } }, fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'], heading: ['"Outfit"', 'sans-serif'] } } }
+    }
+  </script>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col">
+
+  <!-- Navigation -->
+  <nav class="bg-slate-900 border-b border-slate-800 px-6 py-4 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-lg bg-sky-600 flex items-center justify-center text-white font-bold"><i data-lucide="graduation-cap" class="w-5 h-5"></i></div>
+      <span class="font-heading font-extrabold text-white text-base">Sam Academy <span class="text-sky-400">Student Portal</span></span>
+    </a>
+    <div id="nav-actions" class="hidden flex items-center gap-3">
+      <span class="text-xs font-bold text-amber-400" id="stud-name-badge">Student</span>
+      <button onclick="logoutStudent()" class="px-3 py-1.5 bg-rose-500/10 text-rose-400 text-xs font-bold rounded-lg border border-rose-500/20">Logout</button>
+    </div>
+  </nav>
+
+  <!-- Login Form View -->
+  <div id="login-view" class="flex-1 flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 p-8 rounded-3xl max-w-md w-full space-y-6 shadow-2xl">
+      <div class="text-center space-y-1">
+        <div class="w-12 h-12 rounded-2xl bg-sky-500/10 text-sky-400 flex items-center justify-center mx-auto text-xl font-bold">🎓</div>
+        <h2 class="text-2xl font-heading font-extrabold text-white">Student Login</h2>
+        <p class="text-xs text-slate-400">Login using Roll Number or Phone and Password.</p>
+      </div>
+
+      <form onsubmit="handleStudentLogin(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1">Roll No / Phone Number *</label>
+          <input type="text" id="stud-id" required placeholder="e.g. SAM2026-001 or 9021632248" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-white">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1">Password *</label>
+          <input type="password" id="stud-pass" required placeholder="Enter password" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-white">
+        </div>
+        <div id="login-err" class="hidden text-xs text-rose-400 bg-rose-500/10 border border-rose-500/20 p-2 rounded text-center">Invalid Credentials! Contact admin office.</div>
+        <button type="submit" class="w-full py-3 bg-sky-600 hover:bg-sky-500 text-white font-bold rounded-xl text-xs">Access Class Dashboard</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Dashboard Portal View -->
+  <div id="dashboard-view" class="hidden flex-1 p-6 max-w-7xl mx-auto w-full space-y-6">
+    <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 flex justify-between items-center">
+      <div>
+        <h1 class="text-xl font-heading font-extrabold text-white" id="dash-name">Welcome Back</h1>
+        <p class="text-xs text-slate-400" id="dash-details">Class 12th Science • Roll No: SAM2026-001</p>
+      </div>
+      <span class="px-3 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full text-xs font-bold">Class Enrolled</span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 space-y-4">
+        <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+          <h3 class="font-heading font-bold text-white text-base">📚 Study Notes & DPPs</h3>
+          <span class="text-[10px] text-amber-400 font-bold uppercase" id="mat-class-tag">Class 12th</span>
+        </div>
+        <div id="materials-container" class="space-y-2 text-xs"></div>
+      </div>
+
+      <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 space-y-4">
+        <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+          <h3 class="font-heading font-bold text-white text-base">💻 Scheduled CBT Tests</h3>
+          <span class="text-[10px] text-emerald-400 font-bold uppercase">Online Portal</span>
+        </div>
+        <div id="tests-container" class="space-y-2 text-xs"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    const defaultStudents = [
+      { roll: 'SAM2026-001', name: 'Rahul Sharma', classGrade: 'Class 12th Science', phone: '9021632248', pass: 'sam123' },
+      { roll: 'SAM2026-002', name: 'Ananya Patel', classGrade: 'Class 10th', phone: '9021632248', pass: 'sam123' }
+    ];
+
+    const defaultMaterials = [
+      { targetClass: 'Class 12th Science', subject: 'Physics', title: 'Electrostatics Complete Mindmap PDF', url: '#' },
+      { targetClass: 'Class 10th', subject: 'Mathematics', title: 'Trigonometry Board Practice Sheet', url: '#' }
+    ];
+
+    const defaultTests = [
+      { targetClass: 'Class 12th Science', title: 'JEE Main Full CBT Mock Test #5', date: 'Upcoming Sunday', url: '#' }
+    ];
+
+    function handleStudentLogin(e) {
+      e.preventDefault();
+      const id = document.getElementById('stud-id').value.trim();
+      const pass = document.getElementById('stud-pass').value.trim();
+
+      const students = JSON.parse(localStorage.getItem('sam_students') || JSON.stringify(defaultStudents));
+      const student = students.find(s => (s.roll === id || s.phone === id) && s.pass === pass);
+
+      if (student) {
+        sessionStorage.setItem('sam_active_student', JSON.stringify(student));
+        showStudentDashboard();
+      } else {
+        document.getElementById('login-err').classList.remove('hidden');
+      }
+    }
+
+    function showStudentDashboard() {
+      const student = JSON.parse(sessionStorage.getItem('sam_active_student'));
+      document.getElementById('login-view').classList.add('hidden');
+      document.getElementById('dashboard-view').classList.remove('hidden');
+      document.getElementById('nav-actions').classList.remove('hidden');
+
+      document.getElementById('stud-name-badge').textContent = student.name;
+      document.getElementById('dash-name').textContent = `Welcome, ${student.name}`;
+      document.getElementById('dash-details').textContent = `${student.classGrade} • Roll No: ${student.roll}`;
+      document.getElementById('mat-class-tag').textContent = student.classGrade;
+
+      // Filter notes & tests specifically for student's class
+      const allMaterials = JSON.parse(localStorage.getItem('sam_materials') || JSON.stringify(defaultMaterials));
+      const allTests = JSON.parse(localStorage.getItem('sam_tests') || JSON.stringify(defaultTests));
+
+      const classMaterials = allMaterials.filter(m => !m.targetClass || m.targetClass === student.classGrade);
+      const classTests = allTests.filter(t => !t.targetClass || t.targetClass === student.classGrade);
+
+      document.getElementById('materials-container').innerHTML = classMaterials.length ? classMaterials.map(m => `
+        <div class="p-3 bg-slate-950 rounded-xl flex items-center justify-between border border-slate-800">
+          <div><div class="font-bold text-white">${m.title}</div><div class="text-[10px] text-sky-400">${m.subject}</div></div>
+          <a href="${m.url}" target="_blank" class="px-3 py-1 bg-sky-600 text-white font-bold rounded-lg text-[11px]">Download PDF</a>
+        </div>
+      `).join('') : `<div class="p-3 text-slate-500">No materials uploaded for ${student.classGrade} yet.</div>`;
+
+      document.getElementById('tests-container').innerHTML = classTests.length ? classTests.map(t => `
+        <div class="p-3 bg-slate-950 rounded-xl flex items-center justify-between border border-slate-800">
+          <div><div class="font-bold text-white">${t.title}</div><div class="text-[10px] text-amber-400">${t.date}</div></div>
+          <a href="${t.url}" target="_blank" class="px-3 py-1 bg-amber-500 text-slate-950 font-bold rounded-lg text-[11px]">Start CBT</a>
+        </div>
+      `).join('') : `<div class="p-3 text-slate-500">No CBT tests scheduled for ${student.classGrade}.</div>`;
+    }
+
+    function logoutStudent() {
+      sessionStorage.removeItem('sam_active_student');
+      location.reload();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      if (sessionStorage.getItem('sam_active_student')) showStudentDashboard();
+    });
+  </script>
+</body>
+</html>
+
