@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sam Academy of Science | Class 8-12, JEE & NEET Coaching in Nagpur</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50: '#f0f7ff', 500: '#0284c7', 600: '#0369a1', 950: '#030712' },
+            accent: { 300: '#fcd34d', 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706' }
+          },
+          fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'], heading: ['"Outfit"', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #030712; }
+    ::-webkit-scrollbar-thumb { background: #0369a1; border-radius: 4px; }
+    .glass-card { background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); }
+    .glass-card-accent { background: rgba(245, 158, 11, 0.06); backdrop-filter: blur(16px); border: 1px solid rgba(245, 158, 11, 0.25); }
+    @keyframes floatFormula {
+      0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.15; }
+      50% { transform: translateY(-20px) rotate(3deg); opacity: 0.35; }
+    }
+    .animate-float-1 { animation: floatFormula 7s ease-in-out infinite; }
+    .animate-float-2 { animation: floatFormula 9s ease-in-out infinite 1.5s; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans relative overflow-x-hidden">
+
+  <!-- WhatsApp Floating Direct Chat Button -->
+  <a href="https://wa.me/919021632248?text=Hi%20Sam%20Academy%20of%20Science%2C%20I%20want%20to%20inquire%20about%20admissions." target="_blank" class="fixed bottom-6 right-6 z-50 p-3.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 rounded-full shadow-2xl transition transform hover:scale-110 flex items-center gap-2 group">
+    <i data-lucide="message-circle" class="w-6 h-6 fill-current"></i>
+    <span class="text-xs font-bold hidden sm:inline">Chat on WhatsApp</span>
+  </a>
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-slate-950 text-xs sm:text-sm font-bold py-2.5 px-4 text-center">
+    <span>S-SAT 2026 Admissions Open — Take Scholarship Test Online or at Nagpur Campus!</span>
+    <a href="ssat.html" class="underline font-extrabold ml-2">Register For S-SAT →</a>
+  </div>
+
+  <!-- Main Navigation Bar -->
+  <nav class="sticky top-0 z-40 bg-slate-950/90 backdrop-blur-md border-b border-slate-800 px-4 sm:px-8 py-3.5">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 via-blue-600 to-indigo-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
+          <i data-lucide="atom" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <span class="font-heading text-lg sm:text-xl font-extrabold tracking-tight text-white block leading-tight">Sam Academy <span class="text-sky-400">of Science</span></span>
+          <span class="text-[10px] tracking-widest text-slate-400 uppercase font-semibold block">Class 8-12 • JEE • NEET • Nagpur</span>
+        </div>
+      </a>
+
+      <div class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-300">
+        <a href="index.html" class="text-sky-400 font-bold">Home</a>
+        <a href="courses.html" class="hover:text-sky-400 transition">Courses</a>
+        <a href="ssat.html" class="text-amber-400 font-bold hover:text-amber-300 transition flex items-center gap-1"><i data-lucide="award" class="w-4 h-4"></i> S-SAT Test</a>
+        <a href="#gallery" class="hover:text-sky-400 transition">Gallery</a>
+        <a href="#testimonials" class="hover:text-sky-400 transition">Reviews</a>
+        <a href="#location" class="hover:text-sky-400 transition">Location</a>
+      </div>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <a href="student.html" class="px-3.5 py-2 bg-sky-600/20 border border-sky-500/40 hover:bg-sky-600/30 text-sky-300 font-bold rounded-xl text-xs flex items-center gap-1.5 transition">
+          <i data-lucide="graduation-cap" class="w-3.5 h-3.5 text-sky-400"></i> Student Portal
+        </a>
+        <a href="admin.html" class="px-3.5 py-2 bg-slate-900 border border-slate-800 hover:bg-slate-800 text-slate-300 font-bold rounded-xl text-xs flex items-center gap-1.5 transition">
+          <i data-lucide="lock" class="w-3.5 h-3.5 text-amber-400"></i> Staff Portal
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative pt-12 sm:pt-20 pb-20 sm:pb-28 px-4 sm:px-8 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+    <div class="absolute inset-0 pointer-events-none text-sky-300/20 font-mono text-xs select-none overflow-hidden">
+      <div class="absolute top-12 left-[10%] animate-float-1">$$\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}$$</div>
+      <div class="absolute top-28 right-[12%] animate-float-2 text-amber-300/30">$$E = h\nu = \frac{hc}{\lambda}$$</div>
+      <div class="absolute bottom-20 right-[8%] animate-float-1 text-purple-300/30">$$\mathrm{pH} = -\log[\mathrm{H}^+]$$</div>
+    </div>
+
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+      <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-sky-400 text-xs font-semibold">
+          <i data-lucide="sparkles" class="w-4 h-4 text-amber-400"></i> Nagpur's Premier Science & Entrance Academy
+        </div>
+
+        <h1 class="font-heading text-4xl sm:text-6xl font-black text-white leading-[1.12] tracking-tight">
+          Master Science & Ace <span class="bg-gradient-to-r from-sky-400 via-blue-400 to-amber-400 bg-clip-text text-transparent">JEE & NEET</span>
+        </h1>
+
+        <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+          Comprehensive foundation courses for <strong>Class 8, 9 & 10</strong> along with specialized, result-oriented batches for <strong>Class 11, 12, JEE Main, JEE Advanced & NEET</strong> in Nagpur.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+          <a href="ssat.html" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 text-slate-950 font-extrabold rounded-xl shadow-xl flex items-center justify-center gap-2">
+            <i data-lucide="award" class="w-5 h-5"></i> Register For S-SAT Test
+          </a>
+          <a href="courses.html" class="w-full sm:w-auto px-8 py-4 bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-slate-800 font-bold rounded-xl text-center">
+            Explore All Batches
+          </a>
+        </div>
+      </div>
+
+      <!-- Demo Counseling Form Card -->
+      <div class="lg:col-span-5 glass-card-accent rounded-3xl p-6 sm:p-8 border border-amber-500/30">
+        <h3 class="text-xl font-heading font-extrabold text-white mb-4">Book Free Demo Class</h3>
+        <form onsubmit="handleInquiry(event)" class="space-y-3.5">
+          <input type="text" id="inquiry-name" required placeholder="Student's Full Name *" class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-white">
+          <div class="grid grid-cols-2 gap-3">
+            <select id="inquiry-class" required class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-3 py-2.5 text-xs text-white">
+              <option value="">Class Grade</option><option>Class 8th</option><option>Class 9th</option><option>Class 10th</option><option>Class 11th Science</option><option>Class 12th Science</option><option>Dropper Batch</option>
+            </select>
+            <select id="inquiry-goal" required class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-3 py-2.5 text-xs text-white">
+              <option value="">Target Goal</option><option>JEE Main & Advanced</option><option>NEET Medical</option><option>Board Exam</option>
+            </select>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <input type="tel" id="inquiry-phone" required placeholder="Phone Number *" class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-white">
+            <input type="email" id="inquiry-email" placeholder="Email Address" class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-white">
+          </div>
+          <button type="submit" class="w-full py-3.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold rounded-xl text-sm transition">
+            Confirm Free Demo Request
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Indicators Bar -->
+  <section class="py-8 bg-slate-900/80 border-y border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="glass-card p-4 rounded-2xl flex items-center gap-4">
+        <div class="text-2xl">🏆</div><div><div class="text-lg font-black text-white">1000+</div><div class="text-xs text-slate-400 font-semibold">Students Coached</div></div>
+      </div>
+      <div class="glass-card p-4 rounded-2xl flex items-center gap-4">
+        <div class="text-2xl">⭐</div><div><div class="text-lg font-black text-white">95%+</div><div class="text-xs text-slate-400 font-semibold">Board & Entrance Pass</div></div>
+      </div>
+      <div class="glass-card p-4 rounded-2xl flex items-center gap-4">
+        <div class="text-2xl">👨‍🏫</div><div><div class="text-lg font-black text-white">IITian & AIIMS</div><div class="text-xs text-slate-400 font-semibold">Expert Faculty</div></div>
+      </div>
+      <div class="glass-card p-4 rounded-2xl flex items-center gap-4">
+        <div class="text-2xl">📍</div><div><div class="text-lg font-black text-white">Hudkeshwar</div><div class="text-xs text-slate-400 font-semibold">Nagpur Campus</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dynamic Campus Infrastructure Gallery (Managed by Admin) -->
+  <section id="gallery" class="py-16 px-4 sm:px-8 max-w-7xl mx-auto">
+    <div class="text-center max-w-3xl mx-auto mb-12 space-y-2">
+      <span class="text-sky-400 text-xs font-extrabold uppercase tracking-widest">Campus Infrastructure</span>
+      <h2 class="text-3xl font-heading font-extrabold text-white">Experience Sam Academy Life</h2>
+      <p class="text-slate-400 text-xs sm:text-sm">Explore our modern classrooms, physics/chemistry labs, library, and student events in Nagpur.</p>
+    </div>
+
+    <!-- Gallery Container Populated Dynamically -->
+    <div id="dynamic-gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="py-16 px-4 sm:px-8 max-w-7xl mx-auto">
+    <div class="glass-card rounded-3xl p-8 space-y-8">
+      <div class="flex flex-col sm:flex-row justify-between items-center border-b border-slate-800 pb-6 gap-4">
+        <div>
+          <span class="text-amber-400 text-xs font-extrabold uppercase">Reviews</span>
+          <h2 class="text-2xl sm:text-3xl font-heading font-black text-white">Student & Parent Feedback</h2>
+        </div>
+        <div class="bg-slate-950 p-3 rounded-2xl border border-slate-800 text-xs font-bold text-slate-300">
+          Google Rating: <span class="text-amber-400">★ ★ ★ ★ ★ 4.9/5</span> (180+ Reviews)
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="p-4 bg-slate-950 rounded-2xl border border-slate-800 space-y-2">
+          <p class="text-xs text-slate-300 italic">"The daily doubt desks and NCERT preparation for NEET helped me secure 675/720!"</p>
+          <div class="text-xs font-bold text-sky-400">— Ananya Patel (NEET Topper)</div>
+        </div>
+        <div class="p-4 bg-slate-950 rounded-2xl border border-slate-800 space-y-2">
+          <p class="text-xs text-slate-300 italic">"Sam Academy's faculty at Hudkeshwar main road transformed my son's approach to Physics and Math."</p>
+          <div class="text-xs font-bold text-amber-400">— Rajesh Sharma (Parent)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location Map -->
+  <section id="location" class="py-16 px-4 sm:px-8 max-w-7xl mx-auto">
+    <div class="glass-card p-6 sm:p-10 rounded-3xl border border-slate-800 space-y-4">
+      <h3 class="text-xl sm:text-3xl font-heading font-extrabold text-white text-center">Visit Our Nagpur Campus</h3>
+      <p class="text-xs text-slate-400 text-center">Sam Academy of Science, Hudkeshwar Main Road, Opposite Wellness Forever, Nagpur, MH, India | Phone: +91 90216 32248</p>
+      <div class="rounded-2xl overflow-hidden border border-slate-800 h-80 w-full">
+        <iframe title="Nagpur Map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59546.732!2d79.0888!3d21.1458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4c0a5a5a5a5a5%3A0x5a5a5a5a5a5a5a5a!2sHudkeshwar%20Main%20Rd%2C%20Nagpur!5e0!3m2!1sen!2sin!4v1700000000000" width="100%" height="100%" style="border:0; filter: grayscale(0.8) invert(0.9);" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 px-4 bg-slate-950 border-t border-slate-900 text-xs text-slate-500 text-center space-y-2">
+    <p>© 2026 Sam Academy of Science, Nagpur. All rights reserved.</p>
+    <p>Hudkeshwar Main Road, Opp. Wellness Forever | Call: +91 90216 32248 | Email: shourya201116@gmail.com</p>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    // Default Seed Gallery Photos
+    const defaultGalleryImages = [
+      {
+        title: 'Interactive Smart Classrooms',
+        category: 'Classrooms',
+        desc: 'Air-conditioned lecture halls with visual smart boards.',
+        imageUrl: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=600&q=80'
+      },
+      {
+        title: 'Physics & Optics Practical Lab',
+        category: 'Science Labs',
+        desc: 'Practical experiments for physics & optics concepts.',
+        imageUrl: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80'
+      },
+      {
+        title: 'Central Reference Library',
+        category: 'Library',
+        desc: 'Reference modules, NCERT books & PYQ archives.',
+        imageUrl: 'https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=600&q=80'
+      },
+      {
+        title: 'Computer CBT Exam Terminal',
+        category: 'Computer Lab',
+        desc: 'NTA-pattern online exam practice center.',
+        imageUrl: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80'
+      },
+      {
+        title: '1-on-1 Mentorship & Doubt Desk',
+        category: 'Student Life',
+        desc: 'Personal doubt clearing desks after regular lectures.',
+        imageUrl: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80'
+      },
+      {
+        title: 'Annual Result Felicitation Ceremony',
+        category: 'Events & Celebrations',
+        desc: 'Celebrating top rankers in JEE, NEET & Board Exams.',
+        imageUrl: 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=600&q=80'
+      }
+    ];
+
+    function renderPublicGallery() {
+      const images = JSON.parse(localStorage.getItem('sam_gallery_images') || JSON.stringify(defaultGalleryImages));
+      const container = document.getElementById('dynamic-gallery-grid');
+
+      if (!images.length) {
+        container.innerHTML = `<div class="col-span-3 text-center py-8 text-slate-500">No photos uploaded to campus gallery yet.</div>`;
+        return;
+      }
+
+      container.innerHTML = images.map(img => `
+        <div class="glass-card rounded-2xl overflow-hidden group hover:border-sky-500/50 transition">
+          <div class="h-48 bg-slate-900 relative overflow-hidden border-b border-slate-800">
+            <img src="${img.imageUrl}" alt="${img.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=600&q=80'">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+            <span class="absolute top-3 left-3 px-2.5 py-1 bg-slate-950/80 text-sky-400 font-extrabold text-[10px] rounded-full border border-sky-500/30">${img.category || 'Campus'}</span>
+          </div>
+          <div class="p-4 space-y-1">
+            <h4 class="font-heading font-bold text-white text-base">${img.title}</h4>
+            <p class="text-xs text-slate-400 leading-relaxed">${img.desc || ''}</p>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function handleInquiry(e) {
+      e.preventDefault();
+      let leads = JSON.parse(localStorage.getItem('sam_academy_leads') || '[]');
+      leads.unshift({
+        name: document.getElementById('inquiry-name').value,
+        classGrade: document.getElementById('inquiry-class').value,
+        goal: document.getElementById('inquiry-goal').value,
+        phone: document.getElementById('inquiry-phone').value,
+        email: document.getElementById('inquiry-email').value,
+        date: new Date().toLocaleDateString('en-IN')
+      });
+      localStorage.setItem('sam_academy_leads', JSON.stringify(leads));
+      alert("Thank you! Demo class request submitted successfully.");
+      e.target.reset();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderPublicGallery();
+    });
+  </script>
+</body>
+</html>
+
