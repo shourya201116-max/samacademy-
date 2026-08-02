@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Courses & Batches | Sam Academy of Science</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { brand: { 500: '#0284c7' }, accent: { 400: '#fbbf24', 500: '#f59e0b' } }, fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'], heading: ['"Outfit"', 'sans-serif'] } } }
+    }
+  </script>
+  <style>.glass-card { background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); }</style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen">
+
+  <nav class="bg-slate-900 border-b border-slate-800 px-6 py-4 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-lg bg-sky-600 flex items-center justify-center text-white font-bold"><i data-lucide="atom" class="w-5 h-5"></i></div>
+      <span class="font-heading font-extrabold text-white text-base">Sam Academy <span class="text-sky-400">Courses</span></span>
+    </a>
+    <div class="flex items-center gap-4 text-xs font-bold">
+      <a href="index.html" class="text-slate-300 hover:text-white">Home</a>
+      <a href="ssat.html" class="text-amber-400">S-SAT Test</a>
+      <a href="student.html" class="text-sky-400">Student Portal</a>
+    </div>
+  </nav>
+
+  <main class="py-16 px-4 sm:px-8 max-w-7xl mx-auto space-y-12">
+    <div class="text-center max-w-2xl mx-auto space-y-2">
+      <span class="text-sky-400 text-xs font-extrabold uppercase tracking-widest">Academic Programs</span>
+      <h1 class="text-3xl sm:text-5xl font-heading font-extrabold text-white">Class Batches & Curriculum</h1>
+      <p class="text-slate-400 text-xs sm:text-sm">Structured preparation tailored for Class 8-10 Foundation, Class 11-12 Board, JEE & NEET.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="glass-card p-6 sm:p-8 rounded-3xl border-t-4 border-sky-500 space-y-4">
+        <span class="px-3 py-1 bg-sky-500/10 text-sky-400 text-xs font-bold rounded-full">Class 8th, 9th & 10th</span>
+        <h2 class="text-2xl font-heading font-bold text-white">Science & Math Foundation</h2>
+        <p class="text-xs text-slate-400 leading-relaxed">Early conceptual mastery in Physics, Chemistry, Biology & Mathematics to excel in High School Boards, Olympiads & NTSE.</p>
+        <ul class="text-xs text-slate-300 space-y-2 pt-2 border-t border-slate-800">
+          <li>✓ Small Batch Size (Max 30 Students)</li>
+          <li>✓ Weekly Conceptual Test Series</li>
+          <li>✓ Mental Ability & Logic Practice</li>
+        </ul>
+        <a href="ssat.html" class="block text-center py-3 bg-sky-600 text-white font-bold text-xs rounded-xl">Register For Foundation S-SAT</a>
+      </div>
+
+      <div class="glass-card p-6 sm:p-8 rounded-3xl border-t-4 border-amber-500 space-y-4 relative">
+        <span class="px-3 py-1 bg-amber-500/10 text-amber-400 text-xs font-bold rounded-full">Class 11th, 12th & Droppers</span>
+        <h2 class="text-2xl font-heading font-bold text-white">JEE Main & Advanced Target</h2>
+        <p class="text-xs text-slate-400 leading-relaxed">Rigorous numerical problem solving in Physics, Chemistry & Mathematics aligned with NTA CBT computer test patterns.</p>
+        <ul class="text-xs text-slate-300 space-y-2 pt-2 border-t border-slate-800">
+          <li>✓ Daily Practice Problems (DPP Sheets)</li>
+          <li>✓ Previous 15 Years JEE Question Archives</li>
+          <li>✓ Weekly NTA CBT Mock Test Series</li>
+        </ul>
+        <a href="ssat.html" class="block text-center py-3 bg-amber-500 text-slate-950 font-extrabold text-xs rounded-xl">Register For JEE S-SAT</a>
+      </div>
+
+      <div class="glass-card p-6 sm:p-8 rounded-3xl border-t-4 border-emerald-500 space-y-4">
+        <span class="px-3 py-1 bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded-full">Class 11th, 12th & Repeaters</span>
+        <h2 class="text-2xl font-heading font-bold text-white">NEET Medical Target</h2>
+        <p class="text-xs text-slate-400 leading-relaxed">NCERT line-by-line coverage for Physics, Chemistry, Botany & Zoology to score 680+ in NEET Medical entrance exams.</p>
+        <ul class="text-xs text-slate-300 space-y-2 pt-2 border-t border-slate-800">
+          <li>✓ NCERT High-Yield Mindmaps</li>
+          <li>✓ 100+ Chapter-wise OMR Speed Tests</li>
+          <li>✓ Dedicated Doubt Clarification Desks</li>
+        </ul>
+        <a href="ssat.html" class="block text-center py-3 bg-emerald-500 text-slate-950 font-extrabold text-xs rounded-xl">Register For NEET S-SAT</a>
+      </div>
+    </div>
+  </main>
+
+  <script>lucide.createIcons();</script>
+</body>
+</html>
+
