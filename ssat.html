@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S-SAT 2026 Scholarship Exam Portal | Sam Academy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { brand: { 500: '#0284c7' }, accent: { 400: '#fbbf24', 500: '#f59e0b' } }, fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'], heading: ['"Outfit"', 'sans-serif'] } } }
+    }
+  </script>
+  <style>
+    .glass-card-accent { background: rgba(245, 158, 11, 0.06); backdrop-filter: blur(16px); border: 1px solid rgba(245, 158, 11, 0.25); }
+    @media print { body * { visibility: hidden; } #admit-card-modal, #admit-card-modal * { visibility: visible; } #admit-card-modal { position: absolute; left: 0; top: 0; width: 100%; } }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen">
+
+  <nav class="bg-slate-900 border-b border-slate-800 px-6 py-4 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-lg bg-amber-500 flex items-center justify-center text-slate-950 font-bold"><i data-lucide="award" class="w-5 h-5"></i></div>
+      <span class="font-heading font-extrabold text-white text-base">S-SAT <span class="text-amber-400">Scholarship Portal</span></span>
+    </a>
+    <div class="flex items-center gap-4 text-xs font-bold">
+      <a href="index.html" class="text-slate-300 hover:text-white">Home</a>
+      <a href="courses.html" class="text-slate-300 hover:text-white">Courses</a>
+      <a href="student.html" class="text-sky-400">Student Portal</a>
+    </div>
+  </nav>
+
+  <main class="py-12 px-4 sm:px-8 max-w-4xl mx-auto space-y-8">
+    <div class="glass-card-accent p-8 rounded-3xl border border-amber-500/30 text-center space-y-3">
+      <span class="px-3 py-1 bg-amber-500 text-slate-950 font-black text-xs uppercase rounded-full">S-SAT 2026 Registration</span>
+      <h1 class="text-3xl sm:text-5xl font-heading font-extrabold text-white">Sam Scholarship Admission Test</h1>
+      <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto">Get up to 100% Fee Scholarship for Class 8th to 12th, JEE & NEET batches. Choose Online or Offline Centre mode.</p>
+    </div>
+
+    <div class="bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-800">
+      <form onsubmit="handleSSATRegister(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1">Student's Full Name *</label>
+          <input type="text" id="ssat-name" required placeholder="Enter full name" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-white">
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1">Current Class *</label>
+            <select id="ssat-class" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-xs text-white">
+              <option value="">Select Class</option><option>Class 8th</option><option>Class 9th</option><option>Class 10th</option><option>Class 11th Science</option><option>Class 12th Science</option><option>Dropper Batch</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1">Exam Mode Choice *</label>
+            <select id="ssat-mode" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-xs font-bold text-amber-400">
+              <option value="Online">💻 Online Mode (Take Test Online Now)</option>
+              <option value="Offline">🏢 Offline Centre (Sam Academy Campus, Nagpur)</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1">Parent's Mobile Number *</label>
+          <input type="tel" id="ssat-phone" required placeholder="Mobile number" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-white">
+        </div>
+        <button type="submit" class="w-full py-3.5 bg-amber-500 text-slate-950 font-extrabold rounded-xl text-xs">Confirm S-SAT Registration</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Live Online Exam Modal -->
+  <div id="online-exam-modal" class="fixed inset-0 bg-slate-950/95 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-slate-900 border-2 border-sky-500 rounded-3xl w-full max-w-2xl p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto space-y-4">
+      <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+        <h3 class="text-lg font-heading font-extrabold text-white">S-SAT Online Test Paper</h3>
+        <div class="text-xs text-amber-400 font-mono font-bold">15:00 Mins</div>
+      </div>
+      <form id="live-exam-form" onsubmit="submitOnlineExam(event)" class="space-y-4">
+        <div id="exam-q-container" class="space-y-4 text-xs text-slate-200"></div>
+        <button type="submit" class="w-full py-3 bg-emerald-500 text-slate-950 font-bold rounded-xl text-xs">Submit Online Exam</button>
+      </form>
+      <div id="exam-scorecard-view" class="hidden text-center space-y-4 py-4">
+        <div class="text-3xl">🏆</div>
+        <h4 class="text-xl font-heading font-bold text-white">Exam Completed!</h4>
+        <div class="text-2xl font-black text-amber-400" id="final-waiver-text">75% Fee Waiver</div>
+        <button onclick="closeOnlineExamModal()" class="px-6 py-2 bg-slate-800 text-white rounded-xl text-xs">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    const defaultQuestions = [
+      { question: "Acceleration due to gravity 'g' on Earth's surface is approximately:", optA: "9.8 m/s²", optB: "12.5 m/s²", optC: "6.4 m/s²", optD: "15.0 m/s²", correct: "A" },
+      { question: "What is the pH value of pure water at room temperature?", optA: "0", optB: "7", optC: "14", optD: "1", correct: "B" }
+    ];
+
+    function handleSSATRegister(e) {
+      e.preventDefault();
+      const name = document.getElementById('ssat-name').value;
+      const classGrade = document.getElementById('ssat-class').value;
+      const mode = document.getElementById('ssat-mode').value;
+      const phone = document.getElementById('ssat-phone').value;
+
+      const regNo = 'SSAT-2026-' + Math.floor(1000 + Math.random() * 9000);
+      let ssatList = JSON.parse(localStorage.getItem('sam_ssat_candidates') || '[]');
+      ssatList.unshift({ regNo, name, classGrade, mode, phone, scholarship: 'Pending' });
+      localStorage.setItem('sam_ssat_candidates', JSON.stringify(ssatList));
+
+      if (mode.includes('Online')) {
+        startLiveOnlineExam();
+      } else {
+        alert(`Offline Centre Registration Confirmed! Roll No: ${regNo}\nVenue: Hudkeshwar Main Road, Nagpur`);
+      }
+      e.target.reset();
+    }
+
+    function startLiveOnlineExam() {
+      const questions = JSON.parse(localStorage.getItem('sam_exam_questions') || JSON.stringify(defaultQuestions));
+      document.getElementById('exam-q-container').innerHTML = questions.map((q, idx) => `
+        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-2">
+          <div class="font-bold text-white">Q${idx + 1}. ${q.question}</div>
+          <div class="space-y-1">
+            <label class="block"><input type="radio" name="eq_${idx}" value="A" required> A) ${q.optA}</label>
+            <label class="block"><input type="radio" name="eq_${idx}" value="B"> B) ${q.optB}</label>
+            <label class="block"><input type="radio" name="eq_${idx}" value="C"> C) ${q.optC}</label>
+            <label class="block"><input type="radio" name="eq_${idx}" value="D"> D) ${q.optD}</label>
+          </div>
+        </div>
+      `).join('');
+      document.getElementById('online-exam-modal').classList.remove('hidden');
+    }
+
+    function submitOnlineExam(e) {
+      e.preventDefault();
+      document.getElementById('live-exam-form').classList.add('hidden');
+      document.getElementById('exam-scorecard-view').classList.remove('hidden');
+    }
+
+    function closeOnlineExamModal() {
+      document.getElementById('online-exam-modal').classList.add('hidden');
+      document.getElementById('live-exam-form').classList.remove('hidden');
+      document.getElementById('exam-scorecard-view').classList.add('hidden');
+    }
+  </script>
+</body>
+</html>
+
