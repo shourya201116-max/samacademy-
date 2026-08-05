@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firebase Console & Admin Control | Sam Academy of Science</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { brand: { 500: '#0284c7' }, accent: { 400: '#fbbf24', 500: '#f59e0b' } }, fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'], heading: ['"Outfit"', 'sans-serif'] } } }
+    }
+  </script>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col">
+
+  <!-- Admin Header -->
+  <nav class="bg-slate-900 border-b border-slate-800 px-6 py-4 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-lg bg-amber-500 flex items-center justify-center text-slate-950 font-bold"><i data-lucide="shield-check" class="w-5 h-5"></i></div>
+      <span class="font-heading font-extrabold text-white text-base">Sam Academy <span class="text-amber-400">Firebase Cloud Admin</span></span>
+    </a>
+    <div id="nav-actions" class="hidden flex items-center gap-3">
+      <div class="flex items-center gap-1.5 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-400 text-xs font-bold">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Firestore Live
+      </div>
+      <span class="text-xs font-bold text-amber-400" id="admin-badge">Owner</span>
+      <button onclick="logoutAdmin()" class="px-3 py-1.5 bg-rose-500/10 text-rose-400 text-xs font-bold rounded-lg border border-rose-500/20">Logout</button>
+    </div>
+  </nav>
+
+  <!-- Login View -->
+  <div id="login-view" class="flex-1 flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 p-8 rounded-3xl max-w-md w-full space-y-6 shadow-2xl">
+      <div class="text-center space-y-1">
+        <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center mx-auto text-xl font-bold">🔒</div>
+        <h2 class="text-2xl font-heading font-extrabold text-white">Firebase Admin Login</h2>
+        <p class="text-xs text-slate-400">Restricted access for Owner and Manager.</p>
+      </div>
+
+      <form onsubmit="handleAdminLogin(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1">Select Role *</label>
+          <select id="admin-role" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-xs text-white">
+            <option value="owner">Academy Owner</option>
+            <option value="manager">Branch Manager</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1">Access Password *</label>
+          <input type="password" id="admin-pass" required placeholder="Enter password" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-white">
+        </div>
+        <div id="login-err" class="hidden text-xs text-rose-400 bg-rose-500/10 border border-rose-500/20 p-2 rounded text-center">Invalid Password! Access Denied.</div>
+        <button type="submit" class="w-full py-3 bg-amber-500 text-slate-950 font-extrabold rounded-xl text-xs">Unlock Firebase Console</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Admin Control Panel View -->
+  <div id="dashboard-view" class="hidden flex-1 p-6 max-w-7xl mx-auto w-full space-y-6">
+
+    <!-- Firebase Real-time Stats Header -->
+    <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
+      <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl">
+        <span class="text-[10px] text-slate-400 uppercase font-bold">Total Inquiries</span>
+        <div class="text-2xl font-black text-amber-400" id="stat-leads">0</div>
+      </div>
+      <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl">
+        <span class="text-[10px] text-slate-400 uppercase font-bold">Students Registered</span>
+        <div class="text-2xl font-black text-sky-400" id="stat-students">0</div>
+      </div>
+      <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl">
+        <span class="text-[10px] text-slate-400 uppercase font-bold">Materials / DPPs</span>
+        <div class="text-2xl font-black text-emerald-400" id="stat-materials">0</div>
+      </div>
+      <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl">
+        <span class="text-[10px] text-slate-400 uppercase font-bold">Exam Questions</span>
+        <div class="text-2xl font-black text-purple-400" id="stat-questions">0</div>
+      </div>
+      <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl col-span-2 sm:col-span-1">
+        <span class="text-[10px] text-slate-400 uppercase font-bold">Gallery Photos</span>
+        <div class="text-2xl font-black text-rose-400" id="stat-gallery">0</div>
+      </div>
+    </div>
+    
+    <div class="flex flex-wrap gap-2 border-b border-slate-800 pb-3">
+      <button onclick="switchTab('inquiries')" id="tab-btn-inquiries" class="px-4 py-2 rounded-xl text-xs font-bold bg-amber-500 text-slate-950">📋 Demo Leads & Inquiries</button>
+      <button onclick="switchTab('gallery')" id="tab-btn-gallery" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 text-slate-300 border border-slate-800">🖼️ Campus Gallery Manager</button>
+      <button onclick="switchTab('materials')" id="tab-btn-materials" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 text-slate-300 border border-slate-800">📚 Upload DPP & Class Notes</button>
+      <button onclick="switchTab('students')" id="tab-btn-students" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 text-slate-300 border border-slate-800">👨‍🎓 Student Accounts & Passwords</button>
+      <button onclick="switchTab('questions')" id="tab-btn-questions" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 text-slate-300 border border-slate-800">❓ S-SAT Exam Questions</button>
+      <button onclick="switchTab('console')" id="tab-btn-console" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 text-slate-300 border border-slate-800">🔥 Firestore Console Inspector</button>
+    </div>
+
+    <!-- TAB 1: LEADS & INQUIRIES -->
+    <div id="sec-inquiries" class="space-y-6">
+      <div class="bg-slate-900 rounded-2xl border border-slate-800 overflow-x-auto">
+        <div class="p-4 border-b border-slate-800 font-bold text-white text-sm flex justify-between items-center">
+          <span>Submitted Demo Inquiries & WhatsApp Leads</span>
+          <span class="text-xs text-emerald-400 font-mono flex items-center gap-1"><i data-lucide="wifi" class="w-3.5 h-3.5"></i> Live Synced with Firestore</span>
+        </div>
+        <table class="w-full text-left text-xs">
+          <thead><tr class="bg-slate-950 border-b border-slate-800 text-slate-400 uppercase"><th class="py-3 px-4">Date</th><th class="py-3 px-4">Name</th><th class="py-3 px-4">Class</th><th class="py-3 px-4">Goal</th><th class="py-3 px-4">Phone / WhatsApp</th><th class="py-3 px-4">Action</th></tr></thead>
+          <tbody id="tbl-inquiries"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAB 2: GALLERY MANAGER -->
+    <div id="sec-gallery" class="hidden space-y-6">
+      <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 space-y-4">
+        <h3 class="font-bold text-white text-sm">+ Add New Photo to Website Gallery</h3>
+        <form onsubmit="adminAddGalleryImage(event)" class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <input type="text" id="gal-title" required placeholder="Title" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-xs text-white">
+          <select id="gal-category" required class="bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-amber-400 font-bold">
+            <option value="Classrooms">Classrooms</option><option value="Science Labs">Science Labs</option><option value="Library">Library</option>
+          </select>
+          <input type="text" id="gal-desc" placeholder="Description" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-xs text-white">
+          <input type="url" id="gal-url" required placeholder="Image Link" class="sm:col-span-2 bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-xs text-white">
+          <button type="submit" class="bg-amber-500 text-slate-950 font-extrabold rounded-xl text-xs py-2.5">Publish Photo</button>
+        </form>
+      </div>
+      <div class="bg-slate-900 rounded-2xl border border-slate-800 overflow-x-auto">
+        <table class="w-full text-left text-xs"><tbody id="tbl-gallery"></tbody></table>
+      </div>
+    </div>
+
+    <!-- TAB 3: MATERIALS -->
+    <div id="sec-materials" class="hidden space-y-6">
+      <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
+        <h3 class="font-bold text-white text-sm mb-4">+ Upload DPP / Note PDF</h3>
+        <form onsubmit="adminAddMaterial(event)" class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <select id="mat-class-target" required class="bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-amber-400 font-bold">
+            <option value="">Target Class</option><option value="Class 8th">Class 8th</option><option value="Class 9th">Class 9th</option><option value="Class 10th">Class 10th</option><option value="Class 11th Science">Class 11th Science</option><option value="Class 12th Science">Class 12th Science</option>
+          </select>
+          <select id="mat-sub" required class="bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white"><option value="">Subject</option><option>Physics</option><option>Chemistry</option><option>Mathematics</option><option>Biology</option></select>
+          <input type="text" id="mat-title" required placeholder="Title" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-xs text-white">
+          <input type="url" id="mat-url" required placeholder="Drive Link" class="sm:col-span-2 bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-xs text-white">
+          <button type="submit" class="bg-amber-500 text-slate-950 font-bold rounded-xl text-xs py-2">Publish Note</button>
+        </form>
+      </div>
+      <div class="bg-slate-900 rounded-2xl border border-slate-800 overflow-x-auto"><table class="w-full text-left text-xs"><tbody id="tbl-materials"></tbody></table></div>
+    </div>
+
+    <!-- TAB 4: STUDENTS -->
+    <div id="sec-students" class="hidden space-y-6">
+      <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
+        <h3 class="font-bold text-white text-sm mb-4">+ Register Student Account</h3>
+        <form onsubmit="adminAddStudent(event)" class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <input type="text" id="add-student-name" required placeholder="Full Name" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-xs text-white">
+          <input type="text" id="add-student-roll" required placeholder="Roll No" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-xs text-white">
+          <select id="add-student-class" required class="bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-amber-400 font-bold"><option value="">Class</option><option value="Class 8th">Class 8th</option><option value="Class 9th">Class 9th</option><option value="Class 10th">Class 10th</option><option value="Class 11th Science">Class 11th Science</option><option value="Class 12th Science">Class 12th Science</option></select>
+          <input type="tel" id="add-student-phone" required placeholder="Phone Number" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-xs text-white">
+          <input type="password" id="add-student-pass" required placeholder="Password" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-xs text-white">
+          <button type="submit" class="bg-amber-500 text-slate-950 font-bold rounded-xl text-xs py-2">Create Account</button>
+        </form>
+      </div>
+      <div class="bg-slate-900 rounded-2xl border border-slate-800 overflow-x-auto"><table class="w-full text-left text-xs"><tbody id="tbl-students"></tbody></table></div>
+    </div>
+
+    <!-- TAB 5: QUESTIONS -->
+    <div id="sec-questions" class="hidden space-y-6">
+      <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 space-y-3">
+        <h3 class="font-bold text-white text-sm">+ Add S-SAT Question</h3>
+        <form onsubmit="adminSaveQuestion(event)" class="space-y-3">
+          <textarea id="q-text" required rows="2" placeholder="Question statement" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-xs text-white"></textarea>
+          <div class="grid grid-cols-2 gap-3">
+            <input type="text" id="q-a" required placeholder="Option A" class="bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
+            <input type="text" id="q-b" required placeholder="Option B" class="bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
+            <input type="text" id="q-c" required placeholder="Option C" class="bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
+            <input type="text" id="q-d" required placeholder="Option D" class="bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
+          </div>
+          <select id="q-ans" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-amber-400 font-bold"><option value="A">Opt A</option><option value="B">Opt B</option><option value="C">Opt C</option><option value="D">Opt D</option></select>
+          <button type="submit" class="w-full py-2 bg-amber-500 text-slate-950 font-bold rounded-xl text-xs">Save Question</button>
+        </form>
+      </div>
+      <div class="bg-slate-900 rounded-2xl border border-slate-800 overflow-x-auto"><table class="w-full text-left text-xs"><tbody id="tbl-questions"></tbody></table></div>
+    </div>
+
+    <!-- TAB 6: FIRESTORE CONSOLE INSPECTOR -->
+    <div id="sec-console" class="hidden space-y-6">
+      <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div>
+            <h3 class="font-bold text-white text-sm">🔥 Firestore Collection Inspector</h3>
+            <p class="text-xs text-slate-400" id="firestore-path-info">Collection Path: /artifacts/{appId}/public/data/</p>
+          </div>
+          <button onclick="inspectFirestoreCollection()" class="px-3 py-1.5 bg-sky-600 text-white font-bold text-xs rounded-xl flex items-center gap-1">
+            <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i> Refresh Cloud Data
+          </button>
+        </div>
+        <div class="flex gap-2">
+          <button onclick="setInspectorTarget('leads')" id="btn-insp-leads" class="px-3 py-1 bg-amber-500 text-slate-950 font-bold rounded-lg text-xs">Leads Data</button>
+          <button onclick="setInspectorTarget('gallery')" id="btn-insp-gallery" class="px-3 py-1 bg-slate-800 text-slate-300 font-bold rounded-lg text-xs">Gallery Data</button>
+        </div>
+        <pre id="firestore-raw-json" class="bg-slate-950 border border-slate-800 p-4 rounded-xl text-[11px] font-mono text-emerald-400 overflow-x-auto max-h-[400px]">Loading Firestore Documents...</pre>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInWithCustomToken, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, collection, doc, addDoc, deleteDoc, onSnapshot, getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    const appId = typeof __app_id !== 'undefined' ? __app_id : 'sam-academy-app';
+    const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
+      apiKey: "",
+      authDomain: "sam-academy.firebaseapp.com",
+      projectId: "sam-academy"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    let firebaseUser = null;
+    window.firebaseCloud = { db, auth, appId, collection, doc, addDoc, deleteDoc, onSnapshot, getDocs, getUser: () => firebaseUser };
+
+    async function initAdminFirebase() {
+      try {
+        if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+          const userCred = await signInWithCustomToken(auth, __initial_auth_token);
+          firebaseUser = userCred.user;
+        } else {
+          const userCred = await signInAnonymously(auth);
+          firebaseUser = userCred.user;
+        }
+      } catch (err) {}
+
+      onAuthStateChanged(auth, (u) => {
+        firebaseUser = u;
+        if (u) {
+          const leadsRef = collection(db, 'artifacts', appId, 'public', 'data', 'leads');
+          onSnapshot(leadsRef, (snapshot) => {
+            let leads = [];
+            snapshot.forEach(d => leads.push({ docId: d.id, ...d.data() }));
+            if (leads.length > 0) {
+              localStorage.setItem('sam_academy_leads', JSON.stringify(leads));
+              if (typeof renderAdminTables === 'function') renderAdminTables();
+            }
+          }, (err) => {});
+        }
+      });
+    }
+
+    initAdminFirebase();
+  </script>
+
+  <script>
+    lucide.createIcons();
+    const PASSWORDS = { owner: 'owner123', manager: 'sam2026' };
+    let currentInspectorCollection = 'leads';
+
+    function handleAdminLogin(e) {
+      e.preventDefault();
+      const role = document.getElementById('admin-role').value;
+      const pass = document.getElementById('admin-pass').value;
+
+      if (pass === PASSWORDS[role]) {
+        sessionStorage.setItem('sam_active_admin', role === 'owner' ? 'Owner' : 'Manager');
+        showAdminDashboard();
+      } else {
+        document.getElementById('login-err').classList.remove('hidden');
+      }
+    }
+
+    function showAdminDashboard() {
+      document.getElementById('login-view').classList.add('hidden');
+      document.getElementById('dashboard-view').classList.remove('hidden');
+      document.getElementById('nav-actions').classList.remove('hidden');
+      document.getElementById('admin-badge').textContent = sessionStorage.getItem('sam_active_admin');
+      renderAdminTables();
+    }
+
+    function switchTab(tab) {
+      ['gallery', 'materials', 'students', 'questions', 'inquiries', 'console'].forEach(t => {
+        document.getElementById(`sec-${t}`).classList.add('hidden');
+        document.getElementById(`tab-btn-${t}`).className = 'px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 text-slate-300 border border-slate-800';
+      });
+      document.getElementById(`sec-${tab}`).classList.remove('hidden');
+      document.getElementById(`tab-btn-${tab}`).className = 'px-4 py-2 rounded-xl text-xs font-bold bg-amber-500 text-slate-950';
+      if (tab === 'console') inspectFirestoreCollection();
+    }
+
+    function renderAdminTables() {
+      const leads = JSON.parse(localStorage.getItem('sam_academy_leads') || '[]');
+      document.getElementById('tbl-inquiries').innerHTML = leads.map((l, i) => `
+        <tr class="border-b border-slate-800">
+          <td class="py-2.5 px-4 text-slate-400">${l.date}</td>
+          <td class="py-2.5 px-4 font-bold text-white">${l.name}</td>
+          <td class="py-2.5 px-4">${l.classGrade}</td>
+          <td class="py-2.5 px-4">${l.goal}</td>
+          <td class="py-2.5 px-4 text-emerald-400 font-bold"><a href="https://wa.me/91${l.phone}" target="_blank">💬 ${l.phone}</a></td>
+          <td class="py-2.5 px-4"><button onclick="deleteItem('sam_academy_leads', ${i})" class="text-rose-400 font-bold">Delete</button></td>
+        </tr>
+      `).join('');
+
+      document.getElementById('stat-leads').textContent = leads.length;
+    }
+
+    async function inspectFirestoreCollection() {
+      const codeEl = document.getElementById('firestore-raw-json');
+      const appId = window.firebaseCloud ? window.firebaseCloud.appId : 'sam-academy-app';
+
+      if (window.firebaseCloud && window.firebaseCloud.db && window.firebaseCloud.getUser()) {
+        try {
+          const colRef = window.firebaseCloud.collection(window.firebaseCloud.db, 'artifacts', appId, 'public', 'data', currentInspectorCollection);
+          const snap = await window.firebaseCloud.getDocs(colRef);
+          let docs = [];
+          snap.forEach(d => docs.push({ _document_id: d.id, ...d.data() }));
+          codeEl.textContent = docs.length ? JSON.stringify(docs, null, 2) : "// Active Firestore collection empty. Local Cache:\n" + JSON.stringify(JSON.parse(localStorage.getItem('sam_academy_leads') || '[]'), null, 2);
+        } catch(e) { codeEl.textContent = "// Error: " + e.message; }
+      }
+    }
+
+    function setInspectorTarget(target) {
+      currentInspectorCollection = target;
+      inspectFirestoreCollection();
+    }
+
+    function deleteItem(key, idx) {
+      let arr = JSON.parse(localStorage.getItem(key) || '[]');
+      arr.splice(idx, 1);
+      localStorage.setItem(key, JSON.stringify(arr));
+      renderAdminTables();
+    }
+
+    function logoutAdmin() {
+      sessionStorage.removeItem('sam_active_admin');
+      location.reload();
+    }
+
+    window.handleAdminLogin = handleAdminLogin;
+    window.switchTab = switchTab;
+    window.setInspectorTarget = setInspectorTarget;
+    window.inspectFirestoreCollection = inspectFirestoreCollection;
+    window.deleteItem = deleteItem;
+    window.logoutAdmin = logoutAdmin;
+
+    window.addEventListener('DOMContentLoaded', () => { if (sessionStorage.getItem('sam_active_admin')) showAdminDashboard(); });
+  </script>
+</body>
+</html>
+
